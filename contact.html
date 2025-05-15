@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>St.Agnes Primary School Website</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Inter:wght@600&family=Lobster+Two:wght@700&display=swap" rel="stylesheet">
+    
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!--  Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+    
+    <style>
+        .form-control.is-invalid {
+            border-color: #dc3545 !important;
+            background-color: #fff !important;
+            padding-right: calc(1.5em + 0.75rem) !important;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23dc3545'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e") !important;
+            background-repeat: no-repeat !important;
+            background-position: right calc(0.375em + 0.1875rem) center !important;
+            background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem) !important;
+        }
+
+        .form-control.is-valid {
+            border-color: #198754 !important;
+            background-color: #fff !important;
+        }
+
+        .invalid-feedback {
+            display: block !important;
+            color: #dc3545 !important;
+            font-size: 0.875em !important;
+            margin-top: 0.25rem !important;
+            font-weight: 500 !important;
+        }
+
+        .valid-feedback {
+            display: block !important;
+            color: #198754;
+            font-size: 0.875em;
+            margin-top: 0.25rem;
+        }
+
+        .form-floating > .form-control:focus ~ label,
+        .form-floating > .form-control:not(:placeholder-shown) ~ label {
+            color: #0d6efd;
+        }
+
+        .form-floating > .form-control.is-invalid:focus ~ label,
+        .form-floating > .form-control.is-invalid:not(:placeholder-shown) ~ label {
+            color: #dc3545;
+        }
+
+        .form-floating > .form-control.is-valid:focus ~ label,
+        .form-floating > .form-control.is-valid:not(:placeholder-shown) ~ label {
+            color: #198754;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-xxl bg-white p-0">
+       
+        <div class="container-xxl bg-white p-0">
+           <div class="container-xxl bg-white p-0">
+               <!-- Navbar Start -->
+               <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top px-4 px-lg-5 py-lg-0">
+                   <a href="index.html" class="navbar-brand">
+                       <img class="Badge" src="images/IMG/BADGGE SCHOOL.png" alt="St Agnes School Badge">
+                   </a>
+                   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                       <span class="navbar-toggler-icon"></span>
+                   </button>
+                   <div class="collapse navbar-collapse" id="navbarCollapse">
+                       <ul class="navbar-nav mx-auto">
+                           <li class="nav-item"><a href="index.html" class="nav-link active">Home</a></li>
+                           
+                           <!-- About Us Dropdown -->
+                           <li class="nav-item dropdown">
+                               <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">About Us</a>
+                               <ul class="dropdown-menu">
+                                   <li><a href="about.html" class="dropdown-item">Headmistress's Message</a></li>
+                                   <li><a href="about.html" class="dropdown-item">School History</a></li>
+                                   <li><a href="about.html" class="dropdown-item">Staff</a></li>
+                                   <li><a href="about.html" class="dropdown-item">Gallery</a></li>
+                               </ul>
+                           </li>
+                           
+                           <!-- Academics Dropdown -->
+                           <li class="nav-item dropdown">
+                               <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Academics</a>
+                               <ul class="dropdown-menu">
+                                   <li><a href="academics.html" class="dropdown-item">Nursery Section</a></li>
+                                   <li><a href="academics.html" class="dropdown-item">Lower Primary</a></li>
+                                   <li><a href="academics.html" class="dropdown-item">Upper Primary</a></li>
+                                   <li><a href="academics.html" class="dropdown-item">Events</a></li>
+                               </ul>
+                           </li>
+                           
+                           <!-- Admissions Dropdown -->
+                           <li class="nav-item dropdown">
+                               <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Admissions</a>
+                               <ul class="dropdown-menu">
+                                   <li><a href="admissions.html" class="dropdown-item">Admission Process</a></li>
+                                   <li><a href="admissions.html" class="dropdown-item">Fees Structure</a></li>
+                                   <li><a href="admissions.html" class="dropdown-item">Make Appointment</a></li>
+                               </ul>
+                           </li>
+                           
+                           <li class="nav-item"><a href="contact.html" class="nav-link">Contact Us</a></li>
+                       </ul>
+                       <a href="admissions.html" class="btn btn-primary rounded-pill px-3 d-none d-lg-block text-white">Join Us <i class="fa fa-arrow-right ms-3"></i></a>
+                   </div>
+               </nav>
+               <!-- Navbar End -->
+
+
+
+        <!-- Page Header -->
+  <div class="container-xxl py-5 page-header position-relative mb-5" style="background: url('images/GALLERY/PAGE\ HEADER.avif') center center no-repeat; background-size: cover;">
+    <div class="container py-5">
+        <div class="text-center"> 
+            <h1 class="display-2 text-white animated slideInDown mb-4">Contact Us</h1>
+             <nav aria-label="breadcrumb animated slideInDown">
+                <ol class="breadcrumb justify-content-center"> 
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item text-white active" aria-current="page">Contact Us</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+</div>
+<!-- Page Header ends -->
+
+
+        <!-- Contact Start -->
+        <div class="container-xxl py-5">
+            <div class="container">
+                <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+                    <h1 class="mb-3">Get In Touch</h1>
+                    <p>Got a question, suggestion, or just want to say hello? Drop us a message, and we'll get back to you as soon as possible.</p>
+                </div>
+                <div class="row g-5 mb-5">
+                    <div class="col-md-6 col-lg-4 text-center wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="bg-light rounded-circle d-inline-flex align-items-center justify-content-center mb-4" style="width: 75px; height: 75px;">
+                            <i class="fa fa-map-marker-alt fa-2x text-primary"></i>
+                        </div>
+                        <h6>Plot 19,Kitoro Road,Entebbe</h6>
+                    </div>
+                    <div class="col-md-6 col-lg-4 text-center wow fadeInUp" data-wow-delay="0.3s">
+                        <div class="bg-light rounded-circle d-inline-flex align-items-center justify-content-center mb-4" style="width: 75px; height: 75px;">
+                            <i class="fa fa-envelope-open fa-2x text-primary"></i>
+                        </div>
+                        <h6>stagnesprimaryentebbe2016@gmail.com</h6>
+                    </div>
+                    <div class="col-md-6 col-lg-4 text-center wow fadeInUp" data-wow-delay="0.5s">
+                        <div class="bg-light rounded-circle d-inline-flex align-items-center justify-content-center mb-4" style="width: 75px; height: 75px;">
+                            <i class="fa fa-phone-alt fa-2x text-primary"></i>
+                        </div>
+                        <h6>+256 704 274 169</h6>
+                    </div>
+                </div>
+                <div class="bg-light rounded">
+                    <div class="row g-0">
+                        <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+                            <div class="h-100 d-flex flex-column justify-content-center p-5">
+                                <p class="mb-4">Please fill out the form below with your details and message. Our team will get back to you shortly. Let's make something amazing together.</p>
+                                <div id="form-messages" class="alert" style="display: none;"></div>
+                                <form id="contactForm" class="needs-validation" novalidate>
+                                    <div class="row g-3">
+                                        <div class="col-12 col-sm-6">
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control border-0" id="name" name="name" placeholder="Your Name" required>
+                                                <label for="name">Your Name</label>
+                                                <div class="invalid-feedback">Please enter your name.</div>
+                                                <div class="valid-feedback">Looks good!</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-6">
+                                            <div class="form-floating">
+                                                <input type="email" class="form-control border-0" id="email" name="email" placeholder="Your Email" required>
+                                                <label for="email">Your Email</label>
+                                                <div class="invalid-feedback">Please enter a valid email address.</div>
+                                                <div class="valid-feedback">Looks good!</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-6">
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control border-0" id="subject" name="subject" placeholder="Subject" required>
+                                                <label for="subject">Subject</label>
+                                                <div class="invalid-feedback">Please enter a subject.</div>
+                                                <div class="valid-feedback">Looks good!</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-6">
+                                            <div class="form-floating">
+                                                <textarea class="form-control border-0" placeholder="Leave a message here" id="message" name="message" required style="height: 100px"></textarea>
+                                                <label for="message">Message</label>
+                                                <div class="invalid-feedback">Please enter your message (minimum 10 characters).</div>
+                                                <div class="valid-feedback">Looks good!</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <button class="btn btn-primary w-100 py-3 text-white" type="submit" id="submitBtn">
+                                                <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+                                                Send Message
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s" style="min-height: 400px;">
+                            <div class="ratio ratio-16x9">
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.817008344292!2d32.46207397496441!3d0.04646519995308091!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x177d86c75bbda211%3A0xb64df0ca50878399!2sSt%20Agnes%20Primary%20School!5e0!3m2!1sen!2sug!4v1737340986985!5m2!1sen!2sug" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Contact End -->
+
+ <!-- Footer Start -->
+ <div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
+    <div class="container py-5">
+        <div class="row g-5">
+            <div class="col-lg-3 col-md-6">
+                <h3 class="text-white mb-4">Get In Touch</h3>
+                <p class="mb-2"><i class="fa fa-map-marker-alt me-3 text-white">Plot 19,Kitoro Road,Entebbe</i></p>
+                <p class="mb-2"><i class="fa fa-phone-alt me-3 text-white">+256 704 274 169</i></p>
+                <p class="mb-2"><i class="fa fa-envelope me- text-white">stagnesprimaryentebe2016@gmail.com</i></p>
+                <div class="d-flex pt-2">
+                    <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-youtube"></i></a>
+                    <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <h3 class="text-white mb-4">Quick Links</h3>
+                <a class="btn btn-link text-white" href="about.html">About Us</a>
+                <a class="btn btn-link text-white" href="academics.html">Academics</a>
+                <a class="btn btn-link text-white" href="admissions.html">Admissions</a>
+                <a class="btn btn-link text-white" href="contact.html">Contact Us</a>
+                <!-- <a class="btn btn-link text-white-50" href="">Terms & Condition</a> -->
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <a href="about.html"><h3 class="text-white mb-4">Photo Gallery</h3></a>
+                <div class="row g-2 pt-2">
+                    <div class="col-4">
+                        <img class="img-fluid rounded bg-light p-1" src="img/classes-1.jpg" alt="">
+                    </div>
+                    <div class="col-4">
+                        <img class="img-fluid rounded bg-light p-1" src="img/classes-2.jpg" alt="">
+                    </div>
+                    <div class="col-4">
+                        <img class="img-fluid rounded bg-light p-1" src="img/classes-3.jpg" alt="">
+                    </div>
+                    <div class="col-4">
+                        <img class="img-fluid rounded bg-light p-1" src="img/classes-4.jpg" alt="">
+                    </div>
+                    <div class="col-4">
+                        <img class="img-fluid rounded bg-light p-1" src="img/classes-5.jpg" alt="">
+                    </div>
+                    <div class="col-4">
+                        <img class="img-fluid rounded bg-light p-1" src="img/classes-6.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+            <!-- Newsletter Signup Section -->
+             <!-- <div class="col-lg-3 col-md-6">
+                <h3 class="text-white mb-4">Newsletter</h3>
+                <p class="text-white">Stay updated with our latest news and articles</p>
+                <div class="newsletter-form">
+                    <input type="email" placeholder="Enter email" required>
+                    <button type="submit">Subscribe</button>
+                </div>
+            </div> -->
+        </div>
+    </div>
+    <div class="container">
+        <div class="copyright">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0 text-white">
+                    © <a class="border-bottom" href="#"></a> All Right Reserved. St.Agnes Primary School,Bugonga
+                    <!--/*** This template is free as long as you keep the footer author's credit link/attribution link/backlink. If you'd like to use the template without the footer author's credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+                    <a class="border-bottom" href="https://htmlcodex.com"></a>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <div class="footer-menu">
+                        <a href="index.html">Home</a>
+                        <a href="">Cookies</a>
+                         <!-- <a href="">Help</a>q -->
+                        <a href="admissions.html">FAQs</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Footer End -->
+
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up text-white"></i></a>
+    </div>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+    
+    <script>
+    $(document).ready(function() {
+        // Form validation and submission
+        $('#contactForm').on('submit', function(e) {
+            e.preventDefault();
+            
+            // Reset previous validation states
+            $(this).removeClass('was-validated');
+            $('#form-messages').removeClass('alert-success alert-danger').hide();
+            
+            // Force validation on all fields
+            let isValid = true;
+            $(this).find('input, textarea').each(function() {
+                if (!this.checkValidity()) {
+                    $(this).addClass('is-invalid');
+                    isValid = false;
+                }
+            });
+            
+            if (!isValid) {
+                // Show validation feedback
+                $(this).addClass('was-validated');
+                
+                // Scroll to first invalid field
+                const firstInvalid = $(this).find(':invalid').first();
+                if (firstInvalid.length) {
+                    $('html, body').animate({
+                        scrollTop: firstInvalid.offset().top - 100
+                    }, 500);
+                    firstInvalid.focus();
+                }
+                return;
+            }
+            
+            // Show loading state
+            const $submitBtn = $('#submitBtn');
+            const $spinner = $submitBtn.find('.spinner-border');
+            $submitBtn.prop('disabled', true);
+            $spinner.removeClass('d-none');
+            
+            // Collect form data
+            const formData = {
+                name: $('#name').val(),
+                email: $('#email').val(),
+                subject: $('#subject').val(),
+                message: $('#message').val()
+            };
+            
+            // Simulate AJAX submission (replace with actual endpoint)
+            $.ajax({
+                type: 'POST',
+                url: '/api/contact', // Replace with your actual endpoint
+                data: formData,
+                success: function(response) {
+                    $('#form-messages')
+                        .removeClass('alert-danger')
+                        .addClass('alert-success')
+                        .html('<i class="fas fa-check-circle me-2"></i>Thank you for your message! We will get back to you soon.')
+                        .fadeIn();
+                    
+                    // Reset form
+                    $('#contactForm')[0].reset();
+                    $('.form-control').removeClass('is-valid is-invalid');
+                },
+                error: function(xhr, status, error) {
+                    $('#form-messages')
+                        .removeClass('alert-success')
+                        .addClass('alert-danger')
+                        .html('<i class="fas fa-exclamation-circle me-2"></i>Sorry, there was an error sending your message. Please try again later.')
+                        .fadeIn();
+                },
+                complete: function() {
+                    // Reset button state
+                    $submitBtn.prop('disabled', false);
+                    $spinner.addClass('d-none');
+                }
+            });
+        });
+        
+        // Real-time validation
+        $('input, textarea').on('input', function() {
+            const $input = $(this);
+            const value = $input.val().trim();
+            
+            if (value === '') {
+                $input.removeClass('is-valid').addClass('is-invalid');
+                return;
+            }
+            
+            // Email validation
+            if ($input.attr('type') === 'email') {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(value)) {
+                    $input.removeClass('is-valid').addClass('is-invalid');
+                    return;
+                }
+            }
+            
+            // Message length validation
+            if ($input.attr('id') === 'message' && value.length < 10) {
+                $input.removeClass('is-valid').addClass('is-invalid');
+                return;
+            }
+            
+            $input.removeClass('is-invalid').addClass('is-valid');
+        });
+        
+        // Character counter for message with color feedback
+        $('#message').on('input', function() {
+            const maxLength = 500;
+            const currentLength = $(this).val().length;
+            const remaining = maxLength - currentLength;
+            const $counter = $(this).next('.char-counter');
+            
+            if (remaining < 0) {
+                $(this).val($(this).val().substring(0, maxLength));
+            }
+            
+            if (!$counter.length) {
+                $(this).after('<small class="char-counter text-muted"></small>');
+            }
+            
+            $counter.text(remaining + ' characters remaining');
+            
+            // Color feedback
+            if (remaining < 50) {
+                $counter.removeClass('text-muted text-warning').addClass('text-danger');
+            } else if (remaining < 100) {
+                $counter.removeClass('text-muted text-danger').addClass('text-warning');
+            } else {
+                $counter.removeClass('text-warning text-danger').addClass('text-muted');
+            }
+        });
+    });
+    </script>
+</body>
+
+</html>

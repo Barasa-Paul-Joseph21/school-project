@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>St.Agnes Primary School Website</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Inter:wght@600&family=Lobster+Two:wght@700&display=swap" rel="stylesheet">
+    
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+    <style>
+        .hero-section {
+            background: linear-gradient(rgba(110, 61, 61, 0.6), rgba(0,0,0,0.6)), url('/api/placeholder/1920/600');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+        }
+        
+        .process-step {
+            border: 2px solid #f8f9fa;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .process-step:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            /* color: white; */
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #dee2e6;
+            padding: 1rem 0;
+        }
+
+        .form-section {
+            background-color: #f8f9fa;
+        }
+
+        .requirements-card {
+            height: 100%;
+            transition: all 0.3s ease;
+        }
+
+        .requirements-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            /* color: white; */
+        }
+        .card-body .btn-outline-primary:hover
+        {
+        background-color: red;
+        /* text-decoration-color: white; */
+        color: white;
+        } 
+        .card {
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.card-header {
+    border-radius: 8px 8px 0 0;
+}
+
+.card-body p {
+    border-bottom: 1px solid #eee;
+    padding: 8px 0;
+}
+
+.card-body p:last-child {
+    border-bottom: none;
+}
+
+@media (max-width: 768px) {
+    .fees-table {
+        padding: 1rem !important;
+    }
+}
+
+.form-control.is-invalid {
+    border-color: #dc3545 !important;
+    background-color: #fff !important;
+    padding-right: calc(1.5em + 0.75rem) !important;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23dc3545'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e") !important;
+    background-repeat: no-repeat !important;
+    background-position: right calc(0.375em + 0.1875rem) center !important;
+    background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem) !important;
+}
+
+.form-control.is-valid {
+    border-color: #198754 !important;
+    background-color: #fff !important;
+}
+
+.invalid-feedback {
+    display: block !important;
+    color: #dc3545 !important;
+    font-size: 0.875em !important;
+    margin-top: 0.25rem !important;
+    font-weight: 500 !important;
+}
+
+.valid-feedback {
+    display: block !important;
+    color: #198754;
+    font-size: 0.875em;
+    margin-top: 0.25rem;
+}
+
+.form-floating > .form-control:focus ~ label,
+.form-floating > .form-control:not(:placeholder-shown) ~ label {
+    color: #0d6efd;
+}
+
+.form-floating > .form-control.is-invalid:focus ~ label,
+.form-floating > .form-control.is-invalid:not(:placeholder-shown) ~ label {
+    color: #dc3545;
+}
+
+.form-floating > .form-control.is-valid:focus ~ label,
+.form-floating > .form-control.is-valid:not(:placeholder-shown) ~ label {
+    color: #198754;
+}
+    </style>
+</head>
+
+<body>
+    <div class="container-xxl bg-white p-0">
+       
+        <div class="container-xxl bg-white p-0">
+           <div class="container-xxl bg-white p-0">
+               <!-- Navbar Start -->
+               <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top px-4 px-lg-5 py-lg-0">
+                   <a href="index.html" class="navbar-brand">
+                       <img class="Badge" src="images/IMG/BADGGE SCHOOL.png" alt="St Agnes School Badge">
+                   </a>
+                   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                       <span class="navbar-toggler-icon"></span>
+                   </button>
+                   <div class="collapse navbar-collapse" id="navbarCollapse">
+                       <ul class="navbar-nav mx-auto">
+                           <li class="nav-item"><a href="index.html" class="nav-link active">Home</a></li>
+                           
+                           <!-- About Us Dropdown -->
+                           <li class="nav-item dropdown">
+                               <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">About Us</a>
+                               <ul class="dropdown-menu">
+                                   <li><a href="about.html" class="dropdown-item">Headmistress's Message</a></li>
+                                   <li><a href="about.html" class="dropdown-item">School History</a></li>
+                                   <li><a href="about.html" class="dropdown-item">Staff</a></li>
+                                   <li><a href="about.html" class="dropdown-item">Gallery</a></li>
+                               </ul>
+                           </li>
+                           
+                           <!-- Academics Dropdown -->
+                           <li class="nav-item dropdown">
+                               <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Academics</a>
+                               <ul class="dropdown-menu">
+                                   <li><a href="academics.html" class="dropdown-item">Nursery Section</a></li>
+                                   <li><a href="academics.html" class="dropdown-item">Lower Primary</a></li>
+                                   <li><a href="academics.html" class="dropdown-item">Upper Primary</a></li>
+                                   <li><a href="academics.html" class="dropdown-item">Events</a></li>
+                               </ul>
+                           </li>
+                           
+                           <!-- Admissions Dropdown -->
+                           <li class="nav-item dropdown">
+                               <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Admissions</a>
+                               <ul class="dropdown-menu">
+                                   <li><a href="admissions.html" class="dropdown-item">Admission Process</a></li>
+                                   <li><a href="admissions.html" class="dropdown-item">Fees Structure</a></li>
+                                   <li><a href="admissions.html" class="dropdown-item">Make Appointment</a></li>
+                               </ul>
+                           </li>
+                           
+                           <li class="nav-item"><a href="contact.html" class="nav-link">Contact Us</a></li>
+                       </ul>
+                       <a href="admissions.html" class="btn btn-primary rounded-pill px-3 d-none d-lg-block text-white">Join Us <i class="fa fa-arrow-right ms-3"></i></a>
+                   </div>
+               </nav>
+               <!-- Navbar End -->
+
+
+
+
+      <!-- Page Header -->
+  <div class="container-xxl py-5 page-header position-relative mb-5" style="background: url('images/GALLERY/PAGE\ HEADER.avif') center center no-repeat; background-size: cover;">
+    <div class="container py-5">
+        <div class="text-center"> 
+            <h1 class="display-2 text-white animated slideInDown mb-4">Admissions</h1>
+             <nav aria-label="breadcrumb animated slideInDown">
+                <ol class="breadcrumb justify-content-center"> 
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item text-white active" aria-current="page">Admissions</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+</div>
+<!-- Page Header ends -->
+
+
+    <!-- Hero Section -->
+    <section class="hero-section text-center">
+        <div class="container">
+            <h1 class="display-4 mb-4">Your Success story begins here</h1>
+            <!-- <p class="lead">Begin your journey towards excellence with us</p> -->
+            <!-- <a href="#inquiry" class="btn btn-primary btn-lg mt-3 btn-center">Start Your Application</a> -->
+        </div>
+    </section>
+
+    <!-- Requirements Section -->
+    <section class="container py-5">
+        <h2 class="text-center mb-5">Admission Requirements</h2>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card requirements-card">
+                    <div class="card-body">
+                        <h5 class="card-title">Academic Requirements</h5>
+                        <ul class="list-unstyled">
+                            <!-- <li class="mb-2">✓ Minimum GPA of 3.0</li> -->
+                            <li class="mb-2">✓ Standardized test scores</li>
+                            <li class="mb-2">✓ Academic documents</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card requirements-card">
+                    <div class="card-body">
+                        <h5 class="card-title">Required Documents</h5>
+                        <ul class="list-unstyled">
+                            <li class="mb-2">✓ Birth certificate</li>
+                            <li class="mb-2">✓ Previous school records and their photocopies</li>
+                            <li class="mb-2">✓ Two coloured passport photos</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card requirements-card">
+                    <div class="card-body">
+                        <h5 class="card-title">Additional Requirements</h5>
+                        <ul class="list-unstyled">
+                            <li class="mb-2">✓ Medical records</li>
+                            <li class="mb-2">✓ Parent's National ID photocopy</li>
+                            <li class="mb-2">✓ Proof of residence</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Admission Process -->
+    <section class="bg-light py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Admission Process</h2>
+            <div class="row g-4">
+                <div class="col-md-3">
+                    <div class="process-step p-4 bg-white text-center">
+                        <div class="h1 text-primary">1</div>
+                        <h5>Submit Inquiry</h5>
+                        <p>Fill out the initial inquiry form</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="process-step p-4 bg-white text-center">
+                        <div class="h1 text-primary">2</div>
+                        <h5>Complete Form</h5>
+                        <p>Download and fill admission form</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="process-step p-4 bg-white text-center">
+                        <div class="h1 text-primary">3</div>
+                        <h5>Submit Documents</h5>
+                        <p>Upload all required documents</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="process-step p-4 bg-white text-center">
+                        <div class="h1 text-primary">4</div>
+                        <h5>Pay Fee</h5>
+                        <p>Complete admission fee payment</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Inquiry Form -->
+    <section id="inquiry" class="form-section py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Admission Inquiry</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div id="form-messages" class="alert" style="display: none;"></div>
+                    <form id="inquiryForm" class="needs-validation" novalidate>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="firstName" class="form-label">First Name</label>
+                                <input type="text" class="form-control" id="firstName" name="firstName" required>
+                                <div class="invalid-feedback">Please enter your first name.</div>
+                                <!-- <div class="valid-feedback">Looks good!</div> -->
+                            </div>
+                            <div class="col-md-6">
+                                <label for="lastName" class="form-label">Last Name</label>
+                                <input type="text" class="form-control" id="lastName" name="lastName" required>
+                                <div class="invalid-feedback">Please enter your last name.</div>
+                                <!-- <div class="valid-feedback">Looks good!</div> -->
+                            </div>
+                            <div class="col-md-6">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" name="email" required>
+                                <div class="invalid-feedback">Please enter a valid email address.</div>
+                                <!-- <div class="valid-feedback">Looks good!</div> -->
+                            </div>
+                            <div class="col-md-6">
+                                <label for="phone" class="form-label">Phone</label>
+                                <input type="tel" class="form-control" id="phone" name="phone" required>
+                                <div class="invalid-feedback">Please enter a valid phone number.</div>
+                                <!-- <div class="valid-feedback">Looks good!</div> -->
+                            </div>
+                            <div class="col-12">
+                                <label for="grade" class="form-label">Class Applying For</label>
+                                <select class="form-select" id="grade" name="grade" required>
+                                    <option value="">Choose...</option>
+                                    <option>Nursery</option>
+                                    <option>Primary One</option>
+                                    <option>Primary Two</option>
+                                    <option>Primary Three</option>
+                                    <option>Primary Four</option>
+                                    <option>Primary Five</option>
+                                    <option>Primary Six</option>
+                                </select>
+                                <div class="invalid-feedback">Please select a class.</div>
+                                <!-- <div class="valid-feedback">Looks good!</div> -->
+                            </div>
+                            <div class="col-12">
+                                <button class="btn btn-primary w-100 text-white" type="submit" id="submitBtn">
+                                    <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+                                    Submit Inquiry
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+   <!-- FAQ Section -->
+   <section class="py-5">
+    <div class="container">
+        <h2 class="text-center mb-5">Frequently Asked Questions</h2>
+        <!-- Remove any extra divs between heading and accordion -->
+        <div class="accordion" id="faqAccordion">
+            <div class="faq-item">
+                <h3 class="h5 mb-0" data-bs-toggle="collapse" data-bs-target="#faq1">
+                    What are the age requirements for admission?
+                </h3>
+                <div id="faq1" class="collapse" data-bs-parent="#faqAccordion">
+                    <p class="mt-3">Age requirements vary by class level. Generally, students should be 3 years old for Nursery.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <h3 class="h5 mb-0" data-bs-toggle="collapse" data-bs-target="#faq2">
+                    What is the admission process timeline?
+                </h3>
+                <div id="faq2" class="collapse" data-bs-parent="#faqAccordion">
+                    <p class="mt-3">The admission process typically takes 2-3 weeks from submission of all required documents.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <h3 class="h5 mb-0" data-bs-toggle="collapse" data-bs-target="#faq3">
+                    Are there any scholarships available?
+                </h3>
+                <div id="faq3" class="collapse" data-bs-parent="#faqAccordion">
+                    <p class="mt-3">Yes, we offer merit-based and need-based scholarships. Please contact our admissions office for details.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <h3 class="h5 mb-0" data-bs-toggle="collapse" data-bs-target="#faq4">
+                    What documents are required for admission?
+                </h3>
+                <div id="faq4" class="collapse" data-bs-parent="#faqAccordion">
+                    <p class="mt-3">Required documents include previous academic records, birth certificate, and recent photographs.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <h3 class="h5 mb-0" data-bs-toggle="collapse" data-bs-target="#faq5">
+                    How can I track my application status?
+                </h3>
+                <div id="faq5" class="collapse" data-bs-parent="#faqAccordion">
+                    <p class="mt-3">You can track your application status through our online portal using your application reference number.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Inquiry Form Section -->
+    <!-- <section id="inquiry" class="form-section py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Start Your Application</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <form id="inquiryForm" class="needs-validation" novalidate>
+                        [Previous form fields remain the same]
+                         <div class="col-12 mt-4">
+                            <button class="btn btn-primary w-100" type="submit">Submit Inquiry</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section> -->
+
+    <!-- Download and Submit Form Section - Combined with status tracking -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5">Application Forms & Submission</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Step 1: Download Form</h5>
+                            <p class="card-text">Download the complete admission form package</p>
+                            <button class="btn btn-outline-primary" onclick="downloadForm()">Download Form Package</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Step 2: Submit Documents</h5>
+                            <p class="card-text">Upload your completed form and required documents</p>
+                            <button class="btn btn-outline-primary" onclick="openSubmissionForm()">Upload Documents</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Step 3: Track Status</h5>
+                            <p class="card-text">Check your application status</p>
+                            <button class="btn btn-outline-primary" onclick="checkStatus()">Check Status</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Payment Section - Only shown after document verification -->
+    <section id="payment-section" class="py-5" style="display: none;">
+        <div class="container">
+            <h2 class="text-center mb-5">Admission Fee Payment</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Payment Details</h5>
+                            <div class="alert alert-info">
+                                Your documents have been verified. Please proceed with the admission fee payment.
+                            </div>
+                            <p class="card-text">Admission Fee: shs. 50,000</p>
+                            <button class="btn btn-success w-100" onclick="initiatePayment()">Pay Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+   
+     
+    <!-- Fees Structure -->
+<div class="container py-5">
+    <div class="fees-table p-4">
+        <h2 class="fees-title mb-4">School Fees Structure - 2025</h2>
+        
+        <!-- Mobile Cards View -->
+        <div class="d-md-none">
+            <div class="card mb-3" data-aos="fade-up" data-aos-delay="100">
+                <div class="card-header bg-danger text-white">
+                    <h5 class="mb-0">Nursery (Baby, Middle, Top)</h5>
+                </div>
+                <div class="card-body">
+                    <p><strong>Tuition Fees:</strong> UGX 500,000</p>
+                    <p><strong>Meals:</strong> UGX 150,000</p>
+                    <p><strong>Boarding:</strong> -</p>
+                    <p><strong>Transport:</strong> UGX 150,000</p>
+                    <p class="mb-0"><strong>Total:</strong> UGX 800,000</p>
+                </div>
+            </div>
+
+            <div class="card mb-3" data-aos="fade-up" data-aos-delay="100">
+                <div class="card-header bg-danger text-white">
+                    <h5 class="mb-0">Prmary(1 -2)</h5>
+                </div>
+                <div class="card-body">
+                    <p><strong>Tuition Fees:</strong> UGX 500,000</p>
+                    <p><strong>Meals:</strong> UGX 150,000</p>
+                    <p><strong>Boarding:</strong> -</p>
+                    <p><strong>Transport:</strong> UGX 150,000</p>
+                    <p class="mb-0"><strong>Total:</strong> UGX 800,000</p>
+                </div>
+            </div>
+
+            <div class="card mb-3" data-aos="fade-up" data-aos-delay="100">
+                <div class="card-header bg-danger text-white">
+                    <h5 class="mb-0">Primary (3 - 4)</h5>
+                </div>
+                <div class="card-body">
+                    <p><strong>Tuition Fees:</strong> UGX 500,000</p>
+                    <p><strong>Meals:</strong> UGX 150,000</p>
+                    <p><strong>Boarding:</strong> -</p>
+                    <p><strong>Transport:</strong> UGX 150,000</p>
+                    <p class="mb-0"><strong>Total:</strong> UGX 800,000</p>
+                </div>
+            </div>
+
+            <div class="card mb-3" data-aos="fade-up" data-aos-delay="100">
+                <div class="card-header bg-danger text-white">
+                    <h5 class="mb-0">Primary (5 - 6)</h5>
+                </div>
+                <div class="card-body">
+                    <p><strong>Tuition Fees:</strong> UGX 500,000</p>
+                    <p><strong>Meals:</strong> UGX 150,000</p>
+                    <p><strong>Boarding:</strong> -</p>
+                    <p><strong>Transport:</strong> UGX 150,000</p>
+                    <p class="mb-0"><strong>Total:</strong> UGX 800,000</p>
+                </div>
+            </div>
+
+            <div class="card mb-3" data-aos="fade-up" data-aos-delay="100">
+                <div class="card-header bg-danger text-white">
+                    <h5 class="mb-0">Primary 7</h5>
+                </div>
+                <div class="card-body">
+                    <p><strong>Tuition Fees:</strong> UGX 500,000</p>
+                    <p><strong>Meals:</strong> UGX 150,000</p>
+                    <p><strong>Boarding:</strong> UGX 200,000</p>
+                    <p><strong>Transport:</strong> UGX 150,000</p>
+                    <p class="mb-0"><strong>Total:</strong> UGX 800,000</p>
+                </div>
+            </div>
+            <!-- Repeat similar cards for other classes -->
+        </div>
+
+        <!-- Desktop Table View -->
+        <div class="d-none d-md-block">
+            <table class="table table-bordered table-hover text-center">
+                <thead class="table-danger">
+                    <tr>
+                        <th>Class</th>
+                        <th>Tuition Fees (UGX)</th>
+                        <th>Meals (UGX)</th>
+                        <th>Boarding (UGX)</th>
+                        <th>Transport (UGX)</th>
+                        <th>Total (UGX)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Nursery(Baby, Middle, Top)</td>
+                        <td>500,000</td>
+                        <td>150,000</td>
+                        <td>--</td>
+                        <td>150,000</td>
+                        <td>150,000</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Primary(1 - 2)</td>
+                        <td>500,000</td>
+                        <td>150,000</td>
+                        <td>200,000</td>
+                        <td>150,000</td>
+                        <td>150,000</td>
+                    </tr>
+
+                    <tr>
+                        <td>Primary(3 - 4)</td>
+                        <td>500,000</td>
+                        <td>150,000</td>
+                        <td>200,000</td>
+                        <td>150,000</td>
+                        <td>150,000</td>
+                    </tr>
+                      
+                    <tr>
+                        <td>Primary(5 - 6)</td>
+                        <td>500,000</td>
+                        <td>150,000</td>
+                        <td>200,000</td>
+                        <td>150,000</td>
+                        <td>150,000</td>
+                    </tr>
+
+                    <tr>
+                        <td>Primary 7</td>
+                        <td>500,000</td>
+                        <td>150,000</td>
+                        <td>200,000</td>
+                        <td>150,000</td>
+                        <td>150,000</td>
+                    </tr>
+                    <!-- Your existing table rows here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+        
+
+
+        <!-- Footer Start -->
+<div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
+    <div class="container py-5">
+        <div class="row g-5">
+            <div class="col-lg-3 col-md-6">
+                <h3 class="text-white mb-4">Get In Touch</h3>
+                <p class="mb-2"><i class="fa fa-map-marker-alt me-3 text-white">Plot 19,Kitoro Road,Entebbe</i></p>
+                <p class="mb-2"><i class="fa fa-phone-alt me-3 text-white">+256 704 274 169</i></p>
+                <p class="mb-2"><i class="fa fa-envelope me- text-white">stagnesprimaryentebe2016@gmail.com</i></p>
+                <div class="d-flex pt-2">
+                    <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-youtube"></i></a>
+                    <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <h3 class="text-white mb-4">Quick Links</h3>
+                <a class="btn btn-link text-white" href="about.html">About Us</a>
+                <a class="btn btn-link text-white" href="academics.html">Academics</a>
+                <a class="btn btn-link text-white" href="admissions.html">Admissions</a>
+                <a class="btn btn-link text-white" href="contact.html">Contact Us</a>
+                <!-- <a class="btn btn-link text-white-50" href="">Terms & Condition</a> -->
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <a href="about.html"><h3 class="text-white mb-4">Photo Gallery</h3></a>
+                <div class="row g-2 pt-2">
+                    <div class="col-4">
+                        <img class="img-fluid rounded bg-light p-1" src="img/classes-1.jpg" alt="">
+                    </div>
+                    <div class="col-4">
+                        <img class="img-fluid rounded bg-light p-1" src="img/classes-2.jpg" alt="">
+                    </div>
+                    <div class="col-4">
+                        <img class="img-fluid rounded bg-light p-1" src="img/classes-3.jpg" alt="">
+                    </div>
+                    <div class="col-4">
+                        <img class="img-fluid rounded bg-light p-1" src="img/classes-4.jpg" alt="">
+                    </div>
+                    <div class="col-4">
+                        <img class="img-fluid rounded bg-light p-1" src="img/classes-5.jpg" alt="">
+                    </div>
+                    <div class="col-4">
+                        <img class="img-fluid rounded bg-light p-1" src="img/classes-6.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+            <!-- Newsletter Signup Section -->
+             <!-- <div class="col-lg-3 col-md-6">
+                <h3 class="text-white mb-4">Newsletter</h3>
+                <p class="text-white">Stay updated with our latest news and articles</p>
+                <div class="newsletter-form">
+                    <input type="email" placeholder="Enter email" required>
+                    <button type="submit">Subscribe</button>
+                </div>
+            </div> -->
+        </div>
+    </div>
+    <div class="container">
+        <div class="copyright">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0 text-white">
+                    © <a class="border-bottom" href="#"></a> All Right Reserved. St.Agnes Primary School,Bugonga
+                    <!--/*** This template is free as long as you keep the footer author's credit link/attribution link/backlink. If you'd like to use the template without the footer author's credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+                    <a class="border-bottom" href="https://htmlcodex.com"></a>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <div class="footer-menu">
+                        <a href="index.html">Home</a>
+                        <a href="">Cookies</a>
+                         <!-- <a href="">Help</a>q -->
+                        <a href="admissions.html">FAQs</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Footer End -->
+
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up text-white"></i></a>
+    </div>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+
+    <script>
+    $(document).ready(function() {
+        // Form validation and submission
+        $('#inquiryForm').on('submit', function(e) {
+            e.preventDefault();
+            
+            // Reset previous validation states
+            $(this).removeClass('was-validated');
+            $('#form-messages').removeClass('alert-success alert-danger').hide();
+            
+            // Force validation on all fields
+            let isValid = true;
+            $(this).find('input, select').each(function() {
+                if (!this.checkValidity()) {
+                    $(this).addClass('is-invalid');
+                    isValid = false;
+                }
+            });
+            
+            if (!isValid) {
+                // Show validation feedback
+                $(this).addClass('was-validated');
+                
+                // Scroll to first invalid field
+                const firstInvalid = $(this).find(':invalid').first();
+                if (firstInvalid.length) {
+                    $('html, body').animate({
+                        scrollTop: firstInvalid.offset().top - 100
+                    }, 500);
+                    firstInvalid.focus();
+                }
+                return;
+            }
+            
+            // Show loading state
+            const $submitBtn = $('#submitBtn');
+            const $spinner = $submitBtn.find('.spinner-border');
+            $submitBtn.prop('disabled', true);
+            $spinner.removeClass('d-none');
+            
+            // Collect form data
+            const formData = {
+                firstName: $('#firstName').val(),
+                lastName: $('#lastName').val(),
+                email: $('#email').val(),
+                phone: $('#phone').val(),
+                grade: $('#grade').val()
+            };
+            
+            // Simulate AJAX submission (replace with actual endpoint)
+            $.ajax({
+                type: 'POST',
+                url: '/api/admission-inquiry', // Replace with your actual endpoint
+                data: formData,
+                success: function(response) {
+                    $('#form-messages')
+                        .removeClass('alert-danger')
+                        .addClass('alert-success')
+                        .html('<i class="fas fa-check-circle me-2"></i>Thank you for your inquiry! We will contact you shortly.')
+                        .fadeIn();
+                    
+                    // Reset form
+                    $('#inquiryForm')[0].reset();
+                    $('.form-control').removeClass('is-valid is-invalid');
+                },
+                error: function(xhr, status, error) {
+                    $('#form-messages')
+                        .removeClass('alert-success')
+                        .addClass('alert-danger')
+                        .html('<i class="fas fa-exclamation-circle me-2"></i>Sorry, there was an error submitting your inquiry. Please try again later.')
+                        .fadeIn();
+                },
+                complete: function() {
+                    // Reset button state
+                    $submitBtn.prop('disabled', false);
+                    $spinner.addClass('d-none');
+                }
+            });
+        });
+        
+        // Real-time validation
+        $('input, select').on('input change', function() {
+            const $input = $(this);
+            const value = $input.val().trim();
+            
+            if (value === '') {
+                $input.removeClass('is-valid').addClass('is-invalid');
+                return;
+            }
+            
+            // Email validation
+            if ($input.attr('type') === 'email') {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(value)) {
+                    $input.removeClass('is-valid').addClass('is-invalid');
+                    return;
+                }
+            }
+            
+            // Phone validation
+            if ($input.attr('id') === 'phone') {
+                const phoneRegex = /^\+?[\d\s-]{10,}$/;
+                if (!phoneRegex.test(value)) {
+                    $input.removeClass('is-valid').addClass('is-invalid');
+                    return;
+                }
+            }
+            
+            $input.removeClass('is-invalid').addClass('is-valid');
+        });
+    });
+    </script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+

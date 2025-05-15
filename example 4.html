@@ -1,0 +1,1364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Media Centre</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: #f0f2f5;
+        }
+
+        /* Navigation */
+        nav {
+            background: #2c3e50;
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #3498db;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #d32f2f, #388e3c);
+            color: white;
+            padding: 8rem 2rem 4rem;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            padding: 4rem 2rem;
+            background: white;
+        }
+
+         .gallery-section {
+             padding: 3rem 2rem;
+             text-align: center;
+        }
+
+           .gallery-section h2{
+                text-align: center;
+                 margin-bottom: 1rem;
+                  color: #2c3e50;
+                  font-size: 2.5rem;
+                   position: relative;
+            }
+             .gallery-section h2::after {
+                content: '';
+                display: block;
+                width: 50px;
+                height: 3px;
+                 background: #d32f2f; /* Red */
+                margin: 1rem auto;
+            }
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #2c3e50;
+            font-size: 2.5rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background: #d32f2f; /* Red */
+            margin: 1rem auto;
+        }
+        .gallery a {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px 20px;
+            background: #d32f2f;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+
+        .gallery a:hover {
+            background: #388e3c;
+        }
+
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            padding: 2rem 0;
+        }
+
+        .image-grid img {
+            width: 100%;
+            border-radius: 8px;
+             box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+             cursor: pointer;
+        }
+
+         .club-section {
+            padding: 3rem 2rem;
+            background: #f8f9fa;
+        }
+       .club-section h2{
+            text-align: center;
+              margin-bottom: 1rem;
+               color: #2c3e50;
+                font-size: 2.5rem;
+                 position: relative;
+        }
+         .club-section h2::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background: #d32f2f; /* Red */
+            margin: 1rem auto;
+        }
+
+        .club-grid {
+            display: grid;
+             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+             padding: 2rem 0;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+         .club-item {
+            position: relative;
+            overflow: hidden;
+           border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+             transition: transform 0.3s ease;
+        }
+
+        .club-item:hover {
+             transform: translateY(-5px);
+        }
+         .club-item img {
+            width: 100%;
+            display: block;
+           border-radius: 8px;
+        }
+        .club-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+             width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            display: flex;
+             align-items: center;
+            justify-content: center;
+            opacity: 0;
+             transition: opacity 0.3s ease;
+        }
+
+       .club-item:hover .club-overlay {
+            opacity: 1;
+        }
+
+       .club-overlay h3 {
+           color: white;
+             text-align: center;
+        }
+
+        /* Lightbox */
+         .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            position:relative;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90vh;
+            border-radius: 10px;
+            animation: zoomIn 0.3s ease;
+        }
+
+        @keyframes zoomIn {
+            from { transform: scale(0.9); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .close-lightbox {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .close-lightbox:hover {
+            transform: rotate(90deg);
+        }
+
+        /* Events Section */
+        .events {
+            padding: 4rem 2rem;
+            background: #f8f9fa;
+        }
+
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .event-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .event-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .event-card h3 {
+            color: #d32f2f; /* Red */
+            margin-bottom: 10px;
+        }
+
+        .event-card p {
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .event-card a {
+            color: #388e3c; /* Green */
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .event-card a:hover {
+            text-decoration: underline;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 4rem 2rem;
+            background: white;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .testimonial-card img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-bottom: 15px;
+        }
+
+        .testimonial-card h3 {
+            color: #d32f2f; /* Red */
+            margin-bottom: 10px;
+        }
+
+        .testimonial-card p {
+            color: #333;
+            font-style: italic;
+        }
+
+        /* Team Section */
+        .team {
+            padding: 4rem 2rem;
+            background: #f8f9fa;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .team-member {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .team-member img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 15px;
+        }
+
+        .team-member h3 {
+            color: #d32f2f; /* Red */
+            margin-bottom: 10px;
+        }
+
+        .team-member p {
+            color: #333;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 4rem 2rem;
+            background: white;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .contact-form button {
+            background: #d32f2f; /* Red */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .contact-form button:hover {
+            background: #388e3c; /* Green */
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        footer a {
+            color: #388e3c; /* Green */
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: #d32f2f; /* Red */
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header h1 { font-size: 2rem; }
+            .gallery-grid, .events-grid, .testimonials-grid, .team-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+            nav ul {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+        }
+           header {
+            background: linear-gradient(135deg, #d32f2f, #388e3c);
+            color: white;
+            padding: 8rem 2rem 4rem;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .gallery {
+            padding: 4rem 2rem;
+            background: white;
+             text-align: center;
+        }
+
+         .gallery a {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px 20px;
+            background: #d32f2f;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+
+         .gallery a:hover {
+             background: #388e3c;
+        }
+        .lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.9);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.lightbox img {
+    max-width: 90%;
+    max-height: 90vh;
+    border-radius: 10px;
+    animation: zoomIn 0.3s ease;
+}
+
+.nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: none;
+    padding: 1rem;
+    cursor: pointer;
+    font-size: 1.5rem;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+}
+
+.nav-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.prev-btn {
+    left: 2rem;
+}
+
+.next-btn {
+    right: 2rem;
+}
+
+.close-lightbox {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    z-index: 1001;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+}
+
+.close-lightbox:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+@keyframes zoomIn {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+.image-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.image-container:hover {
+    transform: translateY(-5px);
+}
+
+.image-container img {
+    width: 100%;
+    display: block;
+    border-radius: 8px;
+}
+
+.vote-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0,0.7);
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.image-container:hover .vote-container {
+    opacity: 1;
+}
+
+.vote-btn {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: transform 0.2s ease;
+}
+
+.vote-btn:hover {
+    transform: scale(1.1);
+}
+
+.vote-btn.liked {
+    color: #4CAF50;
+}
+
+.vote-btn.disliked {
+    color: #f44336;
+}
+
+.vote-btn.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.vote-count {
+    font-size: 0.9rem;
+}
+
+/* Add these styles to the lightbox */
+.lightbox-vote-container {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 20px;
+    background: rgba(0,0,0,0.7);
+    padding: 10px 20px;
+    border-radius: 25px;
+}
+/* Add these styles to your existing CSS */
+.vote-container {
+    position: absolute;
+    bottom: -50px; /* Start below the image */
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0,0.7);
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(4px);
+}
+
+.image-container:hover .vote-container {
+    bottom: 0;
+    opacity: 1;
+}
+
+.vote-btn {
+    background: none;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 8px 15px;
+    border-radius: 20px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.vote-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+.vote-btn:hover::before {
+    width: 300%;
+    height: 300%;
+}
+
+.vote-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.vote-btn.liked {
+    color: #4CAF50;
+    border-color: #4CAF50;
+    background: rgba(76, 175, 80, 0.1);
+    animation: likeAnimation 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.vote-btn.disliked {
+    color: #f44336;
+    border-color: #f44336;
+    background: rgba(244, 67, 54, 0.1);
+    animation: dislikeAnimation 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.vote-btn i {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.vote-btn:hover i {
+    transform: scale(1.2);
+}
+
+.vote-count {
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.vote-count::after {
+    content: attr(data-count);
+    position: absolute;
+    left: 0;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+}
+
+.vote-btn.vote-cast .vote-count {
+    animation: countChange 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.image-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateY(0);
+}
+
+.image-container:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.image-container img {
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.image-container:hover img {
+    transform: scale(1.05);
+}
+
+/* Lightbox animations */
+.lightbox {
+    transition: background-color 0.3s ease;
+}
+
+.lightbox img {
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.lightbox-vote-container {
+    transform: translateY(50px);
+    opacity: 0;
+    animation: slideUp 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    background: rgba(0,0,0,0.8);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Animation keyframes */
+@keyframes likeAnimation {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+@keyframes dislikeAnimation {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+@keyframes countChange {
+    0% { transform: translateY(0); opacity: 1; }
+    20% { transform: translateY(-20px); opacity: 0; }
+    40% { transform: translateY(20px); opacity: 0; }
+    60% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Navigation button animations */
+.nav-btn {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateX(0) scale(1.1);
+}
+
+.prev-btn:hover {
+    transform: translateX(-5px) scale(1.1);
+}
+
+.next-btn:hover {
+    transform: translateX(5px) scale(1.1);
+}
+
+/* Close button animation */
+.close-lightbox {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.close-lightbox:hover {
+    transform: rotate(90deg) scale(1.1);
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Disabled state with animation */
+.vote-btn.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: scale(0.95);
+    transition: all 0.3s ease;
+}
+
+.vote-btn.disabled:hover {
+    transform: scale(0.95);
+    box-shadow: none;
+}
+    </style>
+</head>
+<body>
+    <header>
+        <h1>School Media Centre</h1>
+        <p>Discover and celebrate our vibrant school community</p>
+    </header>
+   <section class="gallery">
+        <h2 class="section-title">Photo Gallery</h2>
+        <a href="#staff-gallery">Staff Gallery</a>
+        <a href="#student-gallery">Student Gallery</a>
+        <a href="#admin-gallery">School Administration Gallery</a>
+        <a href="#activities-gallery">Extracurricular Activities Gallery</a>
+    </section>
+
+    <section id="staff-gallery" class="gallery-section">
+        <h2>Staff Gallery</h2>
+        <div class="image-grid">
+            <div class="image-container">
+                <img src="images/GALLERY/DRAMA.jpg" alt="Staff Image 1" data-image-id="staff-1">
+                <div class="vote-container">
+                    <button class="vote-btn like-btn" data-type="like">
+                        <i class="fas fa-thumbs-up"></i>
+                        <span class="vote-count">0</span>
+                    </button>
+                    <button class="vote-btn dislike-btn" data-type="dislike">
+                        <i class="fas fa-thumbs-down"></i>
+                        <span class="vote-count">0</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="image-grid">
+                <div class="image-container">
+                    <img src="images/GALLERY/TAILORING.jpg" alt="Staff Image 1" data-image-id="staff-2">
+                    <div class="vote-container">
+                        <button class="vote-btn like-btn" data-type="like">
+                            <i class="fas fa-thumbs-up"></i>
+                            <span class="vote-count">0</span>
+                        </button>
+                        <button class="vote-btn dislike-btn" data-type="dislike">
+                            <i class="fas fa-thumbs-down"></i>
+                            <span class="vote-count">0</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="image-grid">
+                    <div class="image-container">
+                        <img src="images/GALLERY/WRITERS.jpg" alt="Staff Image 1" data-image-id="staff-3">
+                        <div class="vote-container">
+                            <button class="vote-btn like-btn" data-type="like">
+                                <i class="fas fa-thumbs-up"></i>
+                                <span class="vote-count">0</span>
+                            </button>
+                            <button class="vote-btn dislike-btn" data-type="dislike">
+                                <i class="fas fa-thumbs-down"></i>
+                                <span class="vote-count">0</span>
+                            </button>
+                        </div>
+                    </div>
+    </section>
+
+    <section id="student-gallery" class="gallery-section">
+        <h2>Student Gallery</h2>
+        <div class="image-grid">
+            <div class="image-container">
+                <img src="images/GALLERY/SCOUTS.avif" alt="Staff Image 1" data-image-id="staff-4">
+                <div class="vote-container">
+                    <button class="vote-btn like-btn" data-type="like">
+                        <i class="fas fa-thumbs-up"></i>
+                        <span class="vote-count">0</span>
+                    </button>
+                    <button class="vote-btn dislike-btn" data-type="dislike">
+                        <i class="fas fa-thumbs-down"></i>
+                        <span class="vote-count">0</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="image-grid">
+                <div class="image-container">
+                    <img src="images/GALLERY/DRAMA.jpg" alt="Staff Image 1" data-image-id="staff-5">
+                    <div class="vote-container">
+                        <button class="vote-btn like-btn" data-type="like">
+                            <i class="fas fa-thumbs-up"></i>
+                            <span class="vote-count">0</span>
+                        </button>
+                        <button class="vote-btn dislike-btn" data-type="dislike">
+                            <i class="fas fa-thumbs-down"></i>
+                            <span class="vote-count">0</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="image-grid">
+                    <div class="image-container">
+                        <img src="images/GALLERY/CARPENTRY.avif" alt="Staff Image 1" data-image-id="staff-6">
+                        <div class="vote-container">
+                            <button class="vote-btn like-btn" data-type="like">
+                                <i class="fas fa-thumbs-up"></i>
+                                <span class="vote-count">0</span>
+                            </button>
+                            <button class="vote-btn dislike-btn" data-type="dislike">
+                                <i class="fas fa-thumbs-down"></i>
+                                <span class="vote-count">0</span>
+                            </button>
+                        </div>
+                    </div>
+    </section>
+
+    <section id="admin-gallery" class="gallery-section">
+        <h2>School Administration Gallery</h2>
+        <div class="image-grid">
+            <div class="image-container">
+                <img src="images/GALLERY/DRAMA.jpg" alt="Staff Image 1" data-image-id="staff-7">
+                <div class="vote-container">
+                    <button class="vote-btn like-btn" data-type="like">
+                        <i class="fas fa-thumbs-up"></i>
+                        <span class="vote-count">0</span>
+                    </button>
+                    <button class="vote-btn dislike-btn" data-type="dislike">
+                        <i class="fas fa-thumbs-down"></i>
+                        <span class="vote-count">0</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="image-grid">
+                <div class="image-container">
+                    <img src="images/GALLERY/DRAMA.jpg" alt="Staff Image 1" data-image-id="staff-8">
+                    <div class="vote-container">
+                        <button class="vote-btn like-btn" data-type="like">
+                            <i class="fas fa-thumbs-up"></i>
+                            <span class="vote-count">0</span>
+                        </button>
+                        <button class="vote-btn dislike-btn" data-type="dislike">
+                            <i class="fas fa-thumbs-down"></i>
+                            <span class="vote-count">0</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="image-grid">
+                    <div class="image-container">
+                        <img src="images/GALLERY/ART CRAFT.avif" alt="Staff Image 1" data-image-id="staff-9">
+                        <div class="vote-container">
+                            <button class="vote-btn like-btn" data-type="like">
+                                <i class="fas fa-thumbs-up"></i>
+                                <span class="vote-count">0</span>
+                            </button>
+                            <button class="vote-btn dislike-btn" data-type="dislike">
+                                <i class="fas fa-thumbs-down"></i>
+                                <span class="vote-count">0</span>
+                            </button>
+                        </div>
+                    </div>
+    </section>
+
+    <section id="activities-gallery" class="gallery-section">
+        <h2>Extracurricular Activities Gallery</h2>
+        <div class="image-grid">
+            <div class="image-container">
+                <img src="images/GALLERY/DRAMA.jpg" alt="Staff Image 1" data-image-id="staff-10">
+                <div class="vote-container">
+                    <button class="vote-btn like-btn" data-type="like">
+                        <i class="fas fa-thumbs-up"></i>
+                        <span class="vote-count">0</span>
+                    </button>
+                    <button class="vote-btn dislike-btn" data-type="dislike">
+                        <i class="fas fa-thumbs-down"></i>
+                        <span class="vote-count">0</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="image-grid">
+                <div class="image-container">
+                    <img src="images/GALLERY/DRAMA.jpg" alt="Staff Image 1" data-image-id="staff-11">
+                    <div class="vote-container">
+                        <button class="vote-btn like-btn" data-type="like">
+                            <i class="fas fa-thumbs-up"></i>
+                            <span class="vote-count">0</span>
+                        </button>
+                        <button class="vote-btn dislike-btn" data-type="dislike">
+                            <i class="fas fa-thumbs-down"></i>
+                            <span class="vote-count">0</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="image-grid">
+                    <div class="image-container">
+                        <img src="images/GALLERY/DRAMA.jpg" alt="Staff Image 1" data-image-id="staff-12">
+                        <div class="vote-container">
+                            <button class="vote-btn like-btn" data-type="like">
+                                <i class="fas fa-thumbs-up"></i>
+                                <span class="vote-count">0</span>
+                            </button>
+                            <button class="vote-btn dislike-btn" data-type="dislike">
+                                <i class="fas fa-thumbs-down"></i>
+                                <span class="vote-count">0</span>
+                            </button>
+                        </div>
+                    </div>
+    </section>
+
+     <section class="club-section">
+        <h2>School Clubs</h2>
+         <div class="club-grid">
+           <div class="club-item">
+            <img src="https://placehold.co/300x200/red/white?text=Image+1" alt="Club 1">
+             <div class="club-overlay">
+                 <h3>Club Name 1</h3>
+                 <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus saepe molestias similique facilis. Hic voluptate praesentium neque consequatur distinctio labore.</p>
+            </div>
+            </div>
+             <div class="club-item">
+             <img src="https://placehold.co/300x200/green/white?text=Image+2" alt="Club 2">
+              <div class="club-overlay">
+                <h3>Club Name 2</h3>
+            </div>
+             </div>
+           <div class="club-item">
+            <img src="https://placehold.co/300x200/blue/white?text=Image+3" alt="Club 3">
+            <div class="club-overlay">
+                 <h3>Club Name 3</h3>
+             </div>
+            </div>
+             <div class="club-item">
+               <img src="https://placehold.co/300x200/orange/white?text=Image+4" alt="Club 4">
+               <div class="club-overlay">
+                 <h3>Club Name 4</h3>
+            </div>
+             </div>
+              <div class="club-item">
+                 <img src="https://placehold.co/300x200/yellow/white?text=Image+5" alt="Club 5">
+                  <div class="club-overlay">
+                    <h3>Club Name 5</h3>
+                 </div>
+             </div>
+               <div class="club-item">
+               <img src="https://placehold.co/300x200/pink/white?text=Image+6" alt="Club 6">
+                 <div class="club-overlay">
+                   <h3>Club Name 6</h3>
+                </div>
+             </div>
+       </div>
+    </section>
+
+    <section id="events" class="events">
+        <h2 class="section-title">Upcoming Events</h2>
+        <div class="events-grid">
+            <div class="event-card">
+                <h3>Sports Day</h3>
+                <p>Join us for an exciting day of sports and activities.</p>
+                <a href="#">Learn More</a>
+            </div>
+            <div class="event-card">
+                <h3>Science Fair</h3>
+                <p>Explore innovative projects by our students.</p>
+                <a href="#">Learn More</a>
+            </div>
+            <div class="event-card">
+                <h3>Cultural Fest</h3>
+                <p>Celebrate the diversity of our school community.</p>
+                <a href="#">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="testimonials">
+        <h2 class="section-title">Testimonials</h2>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <img src="https://via.placeholder.com/80" alt="Client 1">
+                <h3>John Doe</h3>
+                <p>"The school media centre is amazing! It has helped me grow my skills."</p>
+            </div>
+            <div class="testimonial-card">
+                <img src="https://via.placeholder.com/80" alt="Client 2">
+                <h3>Jane Smith</h3>
+                <p>"I love the events and activities organized by the media centre."</p>
+            </div>
+            <div class="testimonial-card">
+                <img src="https://via.placeholder.com/80" alt="Client 3">
+                <h3>Alice Johnson</h3>
+                <p>"The team is very supportive and creative. Highly recommended!"</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="team" class="team">
+        <h2 class="section-title">Our Team</h2>
+        <div class="team-grid">
+            <div class="team-member">
+                <img src="https://via.placeholder.com/100" alt="Team Member 1">
+                <h3>Michael Brown</h3>
+                <p>Media Coordinator</p>
+            </div>
+            <div class="team-member">
+                <img src="https://via.placeholder.com/100" alt="Team Member 2">
+                <h3>Sarah Lee</h3>
+                <p>Event Manager</p>
+            </div>
+            <div class="team-member">
+                <img src="https://via.placeholder.com/100" alt="Team Member 3">
+                <h3>David Wilson</h3>
+                <p>Creative Director</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- <section id="contact" class="contact">
+        <h2 class="section-title">Contact Us</h2>
+        <div class="contact-form">
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </div>
+    </section> -->
+
+    <!-- <footer>
+        <p>© 2023 School Media Centre. All rights reserved. | <a href="#">Privacy Policy</a></p>
+    </footer> -->
+
+    <!-- Lightbox -->
+    <div class="lightbox">
+        <span class="close-lightbox">&times;</span>
+        <button class="nav-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
+        <img src="" alt="Lightbox Image">
+        <button class="nav-btn next-btn"><i class="fas fa-chevron-right"></i></button>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const lightbox = document.querySelector(".lightbox");
+            const lightboxImg = lightbox.querySelector("img");
+            const closeBtn = lightbox.querySelector(".close-lightbox");
+            const prevBtn = lightbox.querySelector(".prev-btn");
+            const nextBtn = lightbox.querySelector(".next-btn");
+            
+            // Get all gallery images
+            const allGalleryImages = Array.from(document.querySelectorAll(".image-grid img"));
+            let currentImageIndex = 0;
+        
+            // Add click event to all gallery images
+            allGalleryImages.forEach((img, index) => {
+                img.addEventListener("click", () => {
+                    openLightbox(index);
+                });
+            });
+        
+            function openLightbox(index) {
+                currentImageIndex = index;
+                lightbox.style.display = "flex";
+                updateLightboxImage();
+            }
+        
+            function updateLightboxImage() {
+                const currentImage = allGalleryImages[currentImageIndex];
+                lightboxImg.src = currentImage.src;
+                lightboxImg.alt = currentImage.alt;
+                
+                // Update navigation button visibility
+                prevBtn.style.display = currentImageIndex > 0 ? "block" : "none";
+                nextBtn.style.display = currentImageIndex < allGalleryImages.length - 1 ? "block" : "none";
+            }
+        
+            // Navigation buttons
+            prevBtn.addEventListener("click", () => {
+                if (currentImageIndex > 0) {
+                    currentImageIndex--;
+                    updateLightboxImage();
+                }
+            });
+        
+            nextBtn.addEventListener("click", () => {
+                if (currentImageIndex < allGalleryImages.length - 1) {
+                    currentImageIndex++;
+                    updateLightboxImage();
+                }
+            });
+        
+            // Close lightbox
+            closeBtn.addEventListener("click", () => {
+                lightbox.style.display = "none";
+            });
+        
+            // Close on background click
+            lightbox.addEventListener("click", (e) => {
+                if (e.target === lightbox) {
+                    lightbox.style.display = "none";
+                }
+            });
+        
+            // Keyboard navigation
+            document.addEventListener("keydown", (e) => {
+                if (lightbox.style.display === "flex") {
+                    if (e.key === "ArrowLeft" && currentImageIndex > 0) {
+                        currentImageIndex--;
+                        updateLightboxImage();
+                    } else if (e.key === "ArrowRight" && currentImageIndex < allGalleryImages.length - 1) {
+                        currentImageIndex++;
+                        updateLightboxImage();
+                    } else if (e.key === "Escape") {
+                        lightbox.style.display = "none";
+                    }
+                }
+            });
+        });
+        document.addEventListener("DOMContentLoaded", function() {
+    // Initialize vote storage
+    const votes = JSON.parse(localStorage.getItem('galleryVotes')) || {};
+
+    // Function to update vote counts in UI
+    function updateVoteUI(imageId, container) {
+        const voteData = votes[imageId] || { likes: 0, dislikes: 0, userVote: null };
+        const likeBtn = container.querySelector('.like-btn');
+        const dislikeBtn = container.querySelector('.dislike-btn');
+        
+        likeBtn.querySelector('.vote-count').textContent = voteData.likes;
+        dislikeBtn.querySelector('.vote-count').textContent = voteData.dislikes;
+        
+        // Reset classes
+        likeBtn.classList.remove('liked', 'disabled');
+        dislikeBtn.classList.remove('disliked', 'disabled');
+        
+        // Apply appropriate classes based on user's vote
+        if (voteData.userVote === 'like') {
+            likeBtn.classList.add('liked');
+            dislikeBtn.classList.add('disabled');
+        } else if (voteData.userVote === 'dislike') {
+            dislikeBtn.classList.add('disliked');
+            likeBtn.classList.add('disabled');
+        }
+    }
+
+    // Function to handle votes
+    function handleVote(imageId, voteType, container) {
+        if (!votes[imageId]) {
+            votes[imageId] = { likes: 0, dislikes: 0, userVote: null };
+        }
+        
+        const voteData = votes[imageId];
+        
+        // If user has already voted, return
+        if (voteData.userVote) {
+            return;
+        }
+        
+        // Update vote counts
+        if (voteType === 'like') {
+            voteData.likes++;
+        } else {
+            voteData.dislikes++;
+        }
+        
+        // Record user's vote
+        voteData.userVote = voteType;
+        
+        // Save to localStorage
+        localStorage.setItem('galleryVotes', JSON.stringify(votes));
+        
+        // Update UI
+        updateVoteUI(imageId, container);
+        
+        // Update all instances of this image's vote display
+        document.querySelectorAll(`[data-image-id="${imageId}"]`).forEach(img => {
+            const container = img.closest('.image-container').querySelector('.vote-container');
+            updateVoteUI(imageId, container);
+        });
+    }
+
+    // Add vote handlers to all images in gallery
+    document.querySelectorAll('.image-container').forEach(container => {
+        const img = container.querySelector('img');
+        const imageId = img.dataset.imageId;
+        const voteContainer = container.querySelector('.vote-container');
+        
+        // Initialize vote display
+        updateVoteUI(imageId, voteContainer);
+        
+        // Add click handlers
+        voteContainer.querySelectorAll('.vote-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                handleVote(imageId, btn.dataset.type, voteContainer);
+            });
+        });
+    });
+
+    // Update lightbox to handle votes
+    const lightbox = document.querySelector('.lightbox');
+    const lightboxVoteContainer = lightbox.querySelector('.lightbox-vote-container');
+    
+    // Update lightbox vote display when image changes
+    function updateLightboxVotes() {
+        const currentImage = allGalleryImages[currentImageIndex];
+        const imageId = currentImage.dataset.imageId;
+        updateVoteUI(imageId, lightboxVoteContainer);
+    }
+    
+    // Add vote handlers to lightbox buttons
+    lightboxVoteContainer.querySelectorAll('.vote-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const currentImage = allGalleryImages[currentImageIndex];
+            const imageId = currentImage.dataset.imageId;
+            handleVote(imageId, btn.dataset.type, lightboxVoteContainer);
+        });
+    });
+    
+    // Update the existing updateLightboxImage function to include vote updates
+    const originalUpdateLightboxImage = updateLightboxImage;
+    function updateLightboxImage() {
+        originalUpdateLightboxImage();
+        updateLightboxVotes();
+    }
+});
+        </script>
+        
+      
+</body>
+</html>

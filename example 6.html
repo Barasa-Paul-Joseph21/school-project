@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Seeta High School</title>
+
+    <!-- jQuery & jQuery Validate Library -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+
+    <style>
+        /* Simple styling for error messages and fields */
+        .error {
+            color: red;
+            font-size: 14px;
+            margin-top: 5px;
+            display: block;
+        }
+        input.error, textarea.error {
+            border: 2px solid red;
+        }
+        form {
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            margin-top: 15px;
+            background: #28a745;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #218838;
+        }
+    </style>
+</head>
+<body>
+
+    <h2 style="text-align: center;">Contact Us</h2>
+
+    <form id="contactForm">
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name" placeholder="Your Name">
+        
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="email" placeholder="Your Email">
+        
+        <label for="message">Message:</label>
+        <textarea name="message" id="message" placeholder="Your Message"></textarea>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        $(document).ready(function () {
+            $("#contactForm").validate({
+                rules: {
+                    name: {
+                        required: true
+                    },
+                    email: {
+                        required: true,
+                        email: true
+                    },
+                    message: {
+                        required: true,
+                        minlength: 10
+                    }
+                },
+                messages: {
+                    name: "Please enter your name",
+                    email: {
+                        required: "Please enter your email",
+                        email: "Enter a valid email address"
+                    },
+                    message: {
+                        required: "Please enter your message",
+                        minlength: "Message must be at least 10 characters"
+                    }
+                },
+                errorPlacement: function (error, element) {
+                    error.insertAfter(element); // Show error messages below each field
+                },
+                highlight: function (element) {
+                    $(element).addClass("error"); // Highlight invalid fields
+                },
+                unhighlight: function (element) {
+                    $(element).removeClass("error"); // Remove highlight when valid
+                },
+                submitHandler: function (form) {
+                    alert("Form submitted successfully!"); // Remove this alert when integrating backend
+                    form.submit(); // Uncomment this line to allow real submission
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

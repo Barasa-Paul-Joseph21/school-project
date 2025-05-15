@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>St.Agnes Primary School Website</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Inter:wght@600&family=Lobster+Two:wght@700&display=swap" rel="stylesheet">
+    
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    
+    <link href="css/style.css" rel="stylesheet">
+    <style>
+        .gallery-container {
+ width: 80%;
+ margin: 50px auto;
+ height: 350px;
+ position: relative;
+ overflow: hidden; /* Hide images that go outside the container */
+}
+
+.gallery {
+ display: flex;
+ transition: transform 0.5s ease-in-out; /* Smooth sliding */
+}
+
+.gallery-item {
+ margin: 10px;
+ width: 300px;
+ height: 250px;
+ overflow: hidden;
+ position: relative;
+ border: 1px solid #ccc;
+ box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+ flex-shrink: 0; /* Prevent images from shrinking */
+}
+
+.gallery-item img {
+ width: 100%;
+ height: 100%;
+ object-fit: cover;
+ cursor: pointer; /* Indicate clickability */
+ transition: transform 0.3s;
+}
+
+.gallery-item:hover img {
+ transform: scale(1.05);
+}
+
+.like-dislike {
+ position: absolute;
+ bottom: 10px;
+ right: 10px;
+ display: flex;
+ opacity: 0; /* Initially hidden */
+ transition: opacity 0.3s;
+}
+
+.gallery-item:hover .like-dislike {
+ opacity: 1; /* Visible on hover */
+}
+
+.like-dislike button {
+ background: none;
+ border: none;
+ font-size: 1.5em;
+ color: lightgray;
+ cursor: pointer;
+ margin: 0 5px; /* Space between buttons */
+}
+
+.like-dislike button.liked {
+ color: red;
+}
+
+.like-dislike button.disliked {
+ color: blue; /* Color when disliked */
+ background-color: green; /* Background color when disliked */
+ border-radius: 5px; /* Optional: rounded corners */
+}
+
+/* Navigation Buttons */
+.nav-buttons {
+ position: absolute;
+ top: 90%;
+ left: 50%;
+ transform: translate(-50%, -50%);
+ display: flex;
+ z-index: 1; /* Ensure buttons are on top */
+}
+
+.nav-buttons button {
+ background: rgba(0, 0, 0, 0.5);
+ color: white;
+ border: none;
+ padding: 10px 15px;
+ margin: 0 5px;
+ cursor: pointer;
+}
+
+   </style>
+</head>
+
+<body>
+    <div class="container-xxl bg-white p-0">
+       
+        <div class="container-xxl bg-white p-0">
+           <div class="container-xxl bg-white p-0">
+               <!-- Navbar Start -->
+               <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top px-4 px-lg-5 py-lg-0">
+                   <a href="index.html" class="navbar-brand">
+                       <img class="Badge" src="images/IMG/BADGGE SCHOOL.png" alt="St Agnes School Badge">
+                   </a>
+                   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                       <span class="navbar-toggler-icon"></span>
+                   </button>
+                   <div class="collapse navbar-collapse" id="navbarCollapse">
+                       <ul class="navbar-nav mx-auto">
+                           <li class="nav-item"><a href="index.html" class="nav-link active">Home</a></li>
+                           
+                           <!-- About Us Dropdown -->
+                           <li class="nav-item dropdown">
+                               <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">About Us</a>
+                               <ul class="dropdown-menu">
+                                   <li><a href="about.html" class="dropdown-item">Headmistress's Message</a></li>
+                                   <li><a href="about.html" class="dropdown-item">School History</a></li>
+                                   <li><a href="about.html" class="dropdown-item">Staff</a></li>
+                                   <li><a href="about.html" class="dropdown-item">Gallery</a></li>
+                               </ul>
+                           </li>
+                           
+                           <!-- Academics Dropdown -->
+                           <li class="nav-item dropdown">
+                               <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Academics</a>
+                               <ul class="dropdown-menu">
+                                   <li><a href="academics.html" class="dropdown-item">Nursery Section</a></li>
+                                   <li><a href="academics.html" class="dropdown-item">Lower Primary</a></li>
+                                   <li><a href="academics.html" class="dropdown-item">Upper Primary</a></li>
+                                   <li><a href="academics.html" class="dropdown-item">Events</a></li>
+                               </ul>
+                           </li>
+                           
+                           <!-- Admissions Dropdown -->
+                           <li class="nav-item dropdown">
+                               <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Admissions</a>
+                               <ul class="dropdown-menu">
+                                   <li><a href="admissions.html" class="dropdown-item">Admission Process</a></li>
+                                   <li><a href="admissions.html" class="dropdown-item">Fees Structure</a></li>
+                                   <li><a href="admissions.html" class="dropdown-item">Make Appointment</a></li>
+                               </ul>
+                           </li>
+                           
+                           <li class="nav-item"><a href="contact.html" class="nav-link">Contact Us</a></li>
+                       </ul>
+                       <a href="admissions.html" class="btn btn-primary rounded-pill px-3 d-none d-lg-block text-white">Join Us <i class="fa fa-arrow-right ms-3"></i></a>
+                   </div>
+               </nav>
+               <!-- Navbar End -->
+
+
+
+  <!-- Page Header -->
+  <div class="container-xxl py-5 page-header position-relative mb-5" style="background: url('images/GALLERY/PAGE\ HEADER.avif') center center no-repeat; background-size: cover;">
+            <div class="container py-5">
+                <div class="text-center"> 
+                    <h1 class="display-2 text-white animated slideInDown mb-4">About Us</h1>
+                     <nav aria-label="breadcrumb animated slideInDown">
+                        <ol class="breadcrumb justify-content-center"> 
+                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                            <li class="breadcrumb-item text-white active" aria-current="page">About Us</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+       <!-- Page Header ends -->
+
+
+      <!-- Headmistress's message begins -->
+        <section id="headmistress-message" class="container">
+            <div class="row align-items-center">
+              <div class="col-lg-6 order-lg-2">
+                <div class="img-container"> 
+                  <img src="images/IMG/teacher.avif" alt="Headmistress" class="image"> 
+                </div>
+              </div>
+              <div class="col-lg-6 order-lg-1">
+                <h2>Welcome Message from the Headmistress</h2>
+                <p class="lead">
+                  "Education is the most powerful weapon which you can use to change the world." - Nelson Mandela 
+                </p>
+                <p>
+                  Welcome to St.Agnes Primary School,Bugonga, a vibrant community of learners dedicated to fostering intellectual curiosity, creativity, and a lifelong love of learning. 
+                </p>
+                <p>
+                  As Headmistress, I am honored to lead this exceptional institution and guide our students on their journey of academics, faith and personal growth. 
+                </p>
+                <p>
+                  We believe in providing a nurturing and challenging environment where every student feels valued, respected, and empowered to reach their full potential. 
+                </p>
+                <p>
+                  Our commitment to excellence extends beyond academics, encompassing a holistic approach that nurtures the whole child – intellectually, emotionally, socially,spritually and physically. 
+                </p>
+                <p>
+                  I invite you to explore our website and learn more about the unique opportunities that await our students at St.Agnes Primary School,Bugonga. 
+                </p>
+                <p>
+                  Sincerely,</p>
+                <p>Sr.Nassali Frances</p>
+                <p>Headmistress, St.Agnes Primary School,Bugonga</p>
+              </div>
+            </div>
+          </section>
+          <!--Headmistress's message ends  -->
+           
+        <!-- School motto, vision, core values, mission -->
+<div class="container-xxl py-5">
+    <div class="container">
+        <h2 class="main-heading">Our Foundation: The Heart of Our School</h2> <!-- Added a class for targeting -->
+        <div class="row g-4">
+            <!-- School Motto Section -->
+            <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="facility-item">
+                    <div class="facility-icon bg-primary">
+                        <span class="bg-primary"></span>
+                        <i class="fas fa-lightbulb fa-3x text-primary"></i> <!-- Icon for School Motto -->
+                        <span class="bg-primary"></span>
+                    </div>
+                    <div class="facility-text bg-primary">
+                        <h3 class="text-primary mb-3">School Motto</h3>
+                        <p class="mb-0">Hardwork Pays</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- School Mission Section -->
+            <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
+                <div class="facility-item">
+                    <div class="facility-icon bg-success">
+                        <span class="bg-success"></span>
+                        <i class="fas fa-bullseye fa-3x text-success"></i> <!-- Icon for School Mission -->
+                        <span class="bg-success"></span>
+                    </div>
+                    <div class="facility-text bg-success">
+                        <h3 class="text-success mb-3">School Mission</h3>
+                        <p class="mb-0">To provide quality education that will develop the child holistically God Fearing & developmental</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- School Vision Section -->
+            <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
+                <div class="facility-item">
+                    <div class="facility-icon bg-warning">
+                        <span class="bg-warning"></span>
+                        <i class="fas fa-star fa-3x text-warning"></i> <!-- Icon for School Vision -->
+                        <span class="bg-warning"></span>
+                    </div>
+                    <div class="facility-text bg-warning">
+                        <h3 class="text-warning mb-3">School Vision</h3>
+                        <p class="mb-0">To produce reliable citizens who are self reliant responsible people in society</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Core Values Section -->
+            <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
+                <div class="facility-item">
+                    <div class="facility-icon bg-info">
+                        <span class="bg-info"></span>
+                        <i class="fas fa-tree fa-3x text-info"></i> <!-- Icon for Core Values -->
+                        <span class="bg-info"></span>
+                    </div>
+                    <div class="facility-text bg-info">
+                        <h3 class="text-info mb-3">Core Values</h3>
+                        <ul>
+                            <li>Integrity</li>
+                            <li>Respect</li>
+                            <li>Creativity</li>
+                            <li>Collaboration</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- School motto, vision, core values, mission -->
+
+
+          <!-- School history begins  -->
+          <section id="school-history" class="container">
+            <div class="row align-items-center">
+              <div class="col-lg-6"> 
+                <h2 class="section-title">Our History</h2>
+                <p class="lead">St Agnes Nursery and Primary School Entebbe  was started in 1930 by the missionary sisters who handed it over to sisters of the Immaculate Heat of Mary Reparatrix Ggogonya. It is a mixed School day and boarding with both nursery and primary sections
+                 
+                </p>
+                <p>
+                    St. Agnes Primary School, located in Entebbe, Uganda, is a government-aided institution under the leadership of Head Teacher Sr. Nassali Jane Francis. 
+
+                    The school has a rich history and has been serving the community for several decades.
+                   
+                   In recent years, St. Agnes Primary School has made significant strides in both infrastructure and academics. In 2024, the school installed a solar energy system, funded by the 
+                   European Union through the Kampala Capital City Authority's Program on Integrated Local Finances for Sustainable Urban Development (PIFUD). This initiative reduced the school's electricity bills by half, allowing for the reallocation of funds to 
+                   student needs and ensuring a reliable power supply for facilities like dormitories and the computer laboratory. 
+                   
+                   Academically, the school has demonstrated commendable performance. In the Primary Leaving Examinations it's on record that our students have been getting first and second division all through the past years. 
+             
+                   
+                   Beyond academics, St. Agnes Primary School actively participates in extracurricular activities. In 2023, the school excelled in the Entebbe Volleyball Championships, securing the overall winner's 
+                   position in the primary schools category and winning a trophy. 
+                   In 2024, the school excelled in the Music Dance & Drama, securing the overall winner's 
+                   position in the primary schools category and winning a trophy. 
+                </p>
+              </div>
+              <div class="col-lg-6">
+                <div class="history-image-container">
+                  <img src="images/IMG/SCHOOLBACKGROUND1.jpg" alt="School History" class="history-image">
+                </div>
+              </div>
+            </div>
+          </section>
+          <!-- School history ends -->
+
+
+        <!-- About Start
+        <div class="container-xxl py-5">
+            <div class="container">
+                <div class="row g-5 align-items-center">
+                    <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <h1 class="mb-4">Learn More About Our Work And Our Cultural Activities</h1>
+                        <p>Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet</p>
+                        <p class="mb-4">Stet no et lorem dolor et diam, amet duo ut dolore vero eos. No stet est diam rebum amet diam ipsum. Clita clita labore, dolor duo nonumy clita sit at, sed sit sanctus dolor eos, ipsum labore duo duo sit no sea diam. Et dolor et kasd ea. Eirmod diam at dolor est vero nonumy magna.</p>
+                        <div class="row g-4 align-items-center">
+                            <div class="col-sm-6">
+                                <a class="btn btn-primary rounded-pill py-3 px-5" href="">Read More</a>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="d-flex align-items-center">
+                                    <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" style="width: 45px; height: 45px;">
+                                    <div class="ms-3">
+                                        <h6 class="text-primary mb-1">Jhon Doe</h6>
+                                        <small>CEO & Founder</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 about-img wow fadeInUp" data-wow-delay="0.5s">
+                        <div class="row">
+                            <div class="col-12 text-center">
+                                <img class="img-fluid w-75 rounded-circle bg-light p-3" src="img/about-1.jpg" alt="">
+                            </div>
+                            <div class="col-6 text-start" style="margin-top: -150px;">
+                                <img class="img-fluid w-100 rounded-circle bg-light p-3" src="img/about-2.jpg" alt="">
+                            </div>
+                            <div class="col-6 text-end" style="margin-top: -150px;">
+                                <img class="img-fluid w-100 rounded-circle bg-light p-3" src="img/about-3.jpg" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        About End -->
+
+
+        <!-- Call To Action Start
+        <div class="container-xxl py-5">
+            <div class="container">
+                <div class="bg-light rounded">
+                    <div class="row g-0">
+                        <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s" style="min-height: 400px;">
+                            <div class="position-relative h-100">
+                                <img class="position-absolute w-100 h-100 rounded" src="img/call-to-action.jpg" style="object-fit: cover;">
+                            </div>
+                        </div>
+                        <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
+                            <div class="h-100 d-flex flex-column justify-content-center p-5">
+                                <h1 class="mb-4">Become A Teacher</h1>
+                                <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos.
+                                    Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet
+                                </p>
+                                <a class="btn btn-primary py-3 px-5" href="">Get Started Now<i class="fa fa-arrow-right ms-2"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+         Call To Action End -->
+
+
+         <!-- Team Start -->
+        <div class="container-xxl py-5">
+            <div class="container">
+                <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+                    <h1 class="mb-3">Our Staff</h1>
+                    <p>We are delighted to showcase&nbsp;our dedicated team of faculty and staff who play a pivotal role in shaping the educational experience offered to&nbsp;our students.&nbsp;Together, as a collaborative and united team, we strive to create an atmosphere that nurtures academic achievement, personal growth, and community engagement.</p>
+                </div>
+                <div class="row g-4">
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="team-item position-relative">
+                            <img class="img-fluid rounded-circle w-75" src="images/TEACHER PHOTOS/serious-teacher-looking-camera-with-arms-crossed_13339-65185.jpg" alt="">
+                            <div class="team-text">
+                                <h3>Mrs.Christine</h3>
+                                <p>English</p>
+                                <!-- <div class="d-flex align-items-center">
+                                    <a class="btn btn-square btn-primary mx-1 text-white" href=""><i class="fab fa-facebook-f"></i></a>
+                                    <a class="btn btn-square btn-primary  mx-1 text-white" href=""><i class="fab fa-twitter"></i></a>
+                                    <a class="btn btn-square btn-primary  mx-1 text-white" href=""><i class="fab fa-instagram"></i></a>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                        <div class="team-item position-relative">
+                            <img class="img-fluid rounded-circle w-75" src="images/TEACHER PHOTOS/TR 4.avif" alt="">
+                            <div class="team-text">
+                                <h3>Mr.Odong</h3>
+                                <p>Mathematics</p>
+                                <!-- <div class="d-flex align-items-center">
+                                    <a class="btn btn-square btn-primary mx-1 text-white" href=""><i class="fab fa-facebook-f"></i></a>
+                                    <a class="btn btn-square btn-primary  mx-1 text-white" href=""><i class="fab fa-twitter"></i></a>
+                                    <a class="btn btn-square btn-primary  mx-1 text-white" href=""><i class="fab fa-instagram"></i></a>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                        <div class="team-item position-relative">
+                            <img class="img-fluid rounded-circle w-75" src="images/TEACHER PHOTOS/TR 2.avif" alt="">
+                            <div class="team-text">
+                                <h3>Mrs.Sarah</h3>
+                                <p>Science</p>
+                                <!-- <div class="d-flex align-items-center">
+                                    <a class="btn btn-square btn-primary mx-1 text-white" href=""><i class="fab fa-facebook-f"></i></a>
+                                    <a class="btn btn-square btn-primary  mx-1 text-white" href=""><i class="fab fa-twitter"></i></a>
+                                    <a class="btn btn-square btn-primary  mx-1 text-white" href=""><i class="fab fa-instagram"></i></a>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                        <div class="team-item position-relative">
+                            <img class="img-fluid rounded-circle w-75" src="images/TEACHER PHOTOS/TR  5.jpg" alt="">
+                            <div class="team-text">
+                                <h3>Mr.Alex</h3>
+                                <p>Social Studies</p>
+                                <!-- <div class="d-flex align-items-center">
+                                    <a class="btn btn-square btn-primary mx-1 text-white" href=""><i class="fab fa-facebook-f"></i></a>
+                                    <a class="btn btn-square btn-primary  mx-1 text-white" href=""><i class="fab fa-twitter"></i></a>
+                                    <a class="btn btn-square btn-primary  mx-1 text-white" href=""><i class="fab fa-instagram"></i></a>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                        <div class="team-item position-relative">
+                            <img class="img-fluid rounded-circle w-75" src="images/TEACHER PHOTOS/TR 10.jpg" alt="">
+                            <div class="team-text">
+                                <h3>Mrs.Justine</h3>
+                                <p>Religious Education</p>
+                                <!-- <div class="d-flex align-items-center">
+                                    <a class="btn btn-square btn-primary mx-1 text-white" href=""><i class="fab fa-facebook-f"></i></a>
+                                    <a class="btn btn-square btn-primary  mx-1 text-white" href=""><i class="fab fa-twitter"></i></a>
+                                    <a class="btn btn-square btn-primary  mx-1 text-white" href=""><i class="fab fa-instagram"></i></a>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                        <div class="team-item position-relative">
+                            <img class="img-fluid rounded-circle w-75" src="images/TEACHER PHOTOS/TR 6.avif" alt="">
+                            <div class="team-text">
+                                <h3>Mr.Christopher</h3>
+                                <p>Computer Studies</p>
+                                <!-- <div class="d-flex align-items-center">
+                                    <a class="btn btn-square btn-primary mx-1 text-white" href=""><i class="fab fa-facebook-f"></i></a>
+                                    <a class="btn btn-square btn-primary  mx-1 text-white" href=""><i class="fab fa-twitter"></i></a>
+                                    <a class="btn btn-square btn-primary  mx-1 text-white" href=""><i class="fab fa-instagram"></i></a>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Team End -->
+
+      
+       <!-- Gallery begins -->
+       <div>
+        <h1 style="text-align: center;">Creative Hub</h1>
+        <div class="gallery-container">
+            <div class="gallery" id="imageGallery">
+                <div class="gallery-item">
+                    <img src="images/IMG 2/SCHOOL IMG3.jpg" alt="Image 1">
+                    <div class="like-dislike">
+                        <button class="like-button" onclick="toggleLike(0)">&#10084;</button>
+                        <button class="dislike-button" onclick="toggleDislike(0)">&#128078;</button>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/IMG 2/SCHOOL IMG4.jpg" alt="Image 2">
+                    <div class="like-dislike">
+                        <button class="like-button" onclick="toggleLike(1)">&#10084;</button>
+                        <button class="dislike-button" onclick="toggleDislike(1)">&#128078;</button>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                  <img src="images/IMG 2/SCHOOL IMG3.jpg" alt="Image 3">
+                  <div class="like-dislike">
+                      <button class="like-button" onclick="toggleLike(2)">&#10084;</button>
+                      <button class="dislike-button" onclick="toggleDislike(2)">&#128078;</button>
+                  </div>
+              </div>
+              <div class="gallery-item">
+                <img src="images/IMG/SCHOOLBACKGROUND1.jpg" alt="Image 4">
+                <div class="like-dislike">
+                    <button class="like-button" onclick="toggleLike(3)">&#10084;</button>
+                    <button class="dislike-button" onclick="toggleDislike(3)">&#128078;</button>
+                </div>
+            </div>
+            <div class="gallery-item">
+              <img src="images/IMG/sch 2.avif" alt="Image 5">
+              <div class="like-dislike">
+                  <button class="like-button" onclick="toggleLike(4)">&#10084;</button>
+                  <button class="dislike-button" onclick="toggleDislike(4)">&#128078;</button>
+              </div>
+          </div>
+         <div class="gallery-item">
+            <img src="images/GALLERY/IMAGE 1.avif" alt="Image 6">
+            <div class="like-dislike">
+                <button class="like-button" onclick="toggleLike(5)">&#10084;</button>
+                <button class="dislike-button" onclick="toggleDislike(5)">&#128078;</button>
+            </div>
+        </div>
+        <div class="gallery-item">
+          <img src="images/GALLERY/IMAGE 2.avif" alt="Image 7">
+          <div class="like-dislike">
+              <button class="like-button" onclick="toggleLike(6)">&#10084;</button>
+              <button class="dislike-button" onclick="toggleDislike(6)">&#128078;</button>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="images/GALLERY/IMAGE 3.avif" alt="Image 8">
+          <div class="like-dislike">
+              <button class="like-button" onclick="toggleLike(7)">&#10084;</button>
+              <button class="dislike-button" onclick="toggleDislike(7)">&#128078;</button>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="images/GALLERY/IMAGE 4.avif" alt="Image 9">
+          <div class="like-dislike">
+              <button class="like-button" onclick="toggleLike(8)">&#10084;</button>
+              <button class="dislike-button" onclick="toggleDislike(8)">&#128078;</button>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="images/GALLERY/IMAGE 5.avif" alt="Image 10">
+          <div class="like-dislike">
+              <button class="like-button" onclick="toggleLike(9)">&#10084;</button>
+              <button class="dislike-button" onclick="toggleDislike(9)">&#128078;</button>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="images/GALLERY/IMAGE 6.jpg" alt="Image 11">
+          <div class="like-dislike">
+              <button class="like-button" onclick="toggleLike(10)">&#10084;</button>
+              <button class="dislike-button" onclick="toggleDislike(10)">&#128078;</button>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="images/GALLERY/IMAGE 7.jpg" alt="Image 12">
+          <div class="like-dislike">
+              <button class="like-button" onclick="toggleLike(11)">&#10084;</button>
+              <button class="dislike-button" onclick="toggleDislike(11)">&#128078;</button>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="images/GALLERY/IMAGE 8.avif" alt="Image 13">
+          <div class="like-dislike">
+              <button class="like-button" onclick="toggleLike(12)">&#10084;</button>
+              <button class="dislike-button" onclick="toggleDislike(12)">&#128078;</button>
+          </div>
+        </div>
+                <div class="gallery-item">
+                    <img src="images/IMG/PHOTO 3.jpeg" alt="Image 14">
+                    <div class="like-dislike">
+                        <button class="like-button" onclick="toggleLike(13)">&#10084;</button>
+                        <button class="dislike-button" onclick="toggleDislike(13)">&#128078;</button>
+                    </div>
+                </div> 
+                <!-- Add more images as needed -->
+            </div>
+<!--         
+            <div class="nav-buttons">
+                <button onclick="prevSlide()">Previous</button>
+                <button onclick="nextSlide()">Next</button>
+            </div> -->
+        </div>
+        
+        <div id="imageModal" class="modal"> <span class="modal-close" onclick="closeModal()">&times;</span> <img class="modal-content" id="modalImage"> </div>
+        
+         </div>
+        <!-- Gallery Section End -->
+        
+
+    <!-- Footer Start -->
+<div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
+    <div class="container py-5">
+        <div class="row g-5">
+            <!-- Get In Touch Section -->
+            <div class="col-lg-3 col-md-6">
+                <h3 class="text-white mb-4">Get In Touch</h3>
+                <!-- Location with Icon -->
+                <p class="mb-2 text-white">
+                    <i class="fas fa-map-marker-alt me-2"></i>Plot 19, Kitoro Road, Entebbe
+                </p>
+                <!-- Telephone with Icon -->
+                <p class="mb-2 text-white">
+                    <i class="fas fa-phone-alt me-2"></i>+256 704 274 169
+                </p>
+                <!-- Email with Icon -->
+                <p class="mb-2 text-white">
+                    <i class="fas fa-envelope me-2"></i>stagnesprimaryentebe2016@gmail.com
+                </p>
+                <!-- Social Media Icons -->
+                <div class="d-flex pt-2">
+                    <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-youtube"></i></a>
+                    <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+
+            <!-- Quick Links Section -->
+            <div class="col-lg-3 col-md-6">
+                <h3 class="text-white mb-4">Quick Links</h3>
+                <a class="btn btn-link text-white" href="about.html">About Us</a>
+                <a class="btn btn-link text-white" href="academics.html">Academics</a>
+                <a class="btn btn-link text-white" href="admissions.html">Admissions</a>
+                <a class="btn btn-link text-white" href="contact.html">Contact Us</a>
+            </div>
+
+            <!-- Photo Gallery Section -->
+            <div class="col-lg-3 col-md-6">
+                <a href="about.html"><h3 class="text-white mb-4">Photo Gallery</h3></a>
+                <div class="row g-2 pt-2">
+                    <div class="col-4">
+                        <img class="img-fluid rounded bg-light p-1" src="img/classes-1.jpg" alt="">
+                    </div>
+                    <div class="col-4">
+                        <img class="img-fluid rounded bg-light p-1" src="img/classes-2.jpg" alt="">
+                    </div>
+                    <div class="col-4">
+                        <img class="img-fluid rounded bg-light p-1" src="img/classes-3.jpg" alt="">
+                    </div>
+                    <div class="col-4">
+                        <img class="img-fluid rounded bg-light p-1" src="img/classes-4.jpg" alt="">
+                    </div>
+                    <div class="col-4">
+                        <img class="img-fluid rounded bg-light p-1" src="img/classes-5.jpg" alt="">
+                    </div>
+                    <div class="col-4">
+                        <img class="img-fluid rounded bg-light p-1" src="img/classes-6.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Newsletter Section -->
+            <!-- <div class="col-lg-3 col-md-6">
+                <h3 class="text-white mb-4">Newsletter</h3>
+                <p class="text-white">Stay updated with our latest news and articles</p>
+                <div class="newsletter-form">
+                    <input type="email" placeholder="Enter email" required>
+                    <button type="submit">Subscribe</button>
+                </div>
+            </div> -->
+        </div>
+    </div>
+
+    <!-- Copyright Section -->
+    <div class="container">
+        <div class="copyright">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0 text-white">
+                    © <a class="border-bottom" href="#"></a> All Right Reserved. St. Agnes Primary School, Bugonga
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <div class="footer-menu">
+                        <a href="index.html">Home</a>
+                        <a href="">Cookies</a>
+                        <a href="admissions.html">FAQs</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Footer End -->
+
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up text-white"></i></a>
+    </div>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+    <script>
+        const gallery = document.getElementById('imageGallery');
+        let galleryItems = Array.from(document.querySelectorAll('.gallery-item'));
+        const itemWidth = galleryItems[0].offsetWidth + 20; // Width of an item + margin
+        let currentPosition = 0;
+    
+        // Clone first few images and append them for smooth infinite scrolling
+        galleryItems.forEach(item => {
+            const clone = item.cloneNode(true);
+            gallery.appendChild(clone);
+        });
+    
+        function updateSliderPosition() {
+            gallery.style.transition = 'transform 0.5s ease-in-out';
+            gallery.style.transform = `translateX(-${currentPosition * itemWidth}px)`;
+        }
+    
+        function nextSlide() {
+            currentPosition++;
+            updateSliderPosition();
+            
+            // Reset position instantly when reaching the cloned images
+            if (currentPosition >= galleryItems.length) {
+                setTimeout(() => {
+                    gallery.style.transition = 'none';
+                    currentPosition = 0;
+                    gallery.style.transform = `translateX(0px)`;
+                }, 500);
+            }
+        }
+    
+        // Auto-loop every 3 seconds
+        setInterval(nextSlide, 3000);
+    
+        // Restore like and dislike functionality
+        document.addEventListener('click', function(event) {
+            if (event.target.classList.contains('like-button')) {
+                toggleLike(event.target);
+            } else if (event.target.classList.contains('dislike-button')) {
+                toggleDislike(event.target);
+            }
+        });
+    
+        function toggleLike(button) {
+            const dislikeButton = button.parentElement.querySelector('.dislike-button');
+            if (button.classList.contains('liked')) {
+                button.classList.remove('liked');
+            } else {
+                dislikeButton.classList.remove('disliked');
+                button.classList.add('liked');
+            }
+        }
+    
+        function toggleDislike(button) {
+            const likeButton = button.parentElement.querySelector('.like-button');
+            if (button.classList.contains('disliked')) {
+                button.classList.remove('disliked');
+            } else {
+                likeButton.classList.remove('liked');
+                button.classList.add('disliked');
+            }
+        }
+    </script>
+</body>
+
+</html>

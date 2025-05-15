@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>St.Agnes Primary School Website</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Inter:wght@600&family=Lobster+Two:wght@700&display=swap" rel="stylesheet">
+    
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!--  Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+    <style>
+        /* Centered heading with responsive design */
+        #academics-section h2 {
+            text-align: center;
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            color: #12a683;
+            margin: 2rem 0;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #12a683;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+            transition: transform 0.3s ease;
+        }
+        
+        #academics-section h2:hover {
+            transform: scale(1.05);
+        }
+        
+        .calendar-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .calendar {
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(18, 166, 131, 0.15);
+            padding: 25px;
+            max-width: 550px;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+        
+        .calendar:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(18, 166, 131, 0.25);
+        }
+        
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .calendar-header button {
+            background-color: #12a683;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+        
+        .calendar-header button:hover {
+            background-color: #0e8668;
+            transform: scale(1.1);
+        }
+        
+        .month-year {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .calendar-body {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 8px;
+        }
+        
+        .calendar-day {
+            padding: clamp(8px, 2vw, 15px);
+            text-align: center;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .calendar-day.header {
+            font-weight: bold;
+            background-color: #f0f9f6;
+            color: #12a683;
+            border: none;
+        }
+        
+        .calendar-day:not(.header):hover {
+            background-color: #e6f7f2;
+            transform: scale(1.1);
+            z-index: 1;
+        }
+        
+        .calendar-day.today {
+            background-color: #12a683;
+            color: #fff;
+            font-weight: bold;
+        }
+        
+        .calendar-day.event {
+            background-color: #fff3f3;
+            border: 2px solid #ff9999;
+            color: #575454;
+        }
+        
+        .calendar-day.event::after {
+            content: '•';
+            color: #ff4444;
+            position: absolute;
+            bottom: 2px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .events-display {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 500px;
+            min-height: 100px;
+            transition: all 0.3s ease;
+        }
+        
+        .events-display h3 {
+            color: #12a683;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        
+        .event-item {
+            padding: 8px;
+            margin: 5px 0;
+            background-color: #fff;
+            border-radius: 5px;
+            border-left: 4px solid #12a683;
+            transition: all 0.2s ease;
+        }
+        
+        .event-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .calendar {
+                padding: 15px;
+            }
+            
+            .calendar-day {
+                font-size: 0.9rem;
+            }
+            
+            .events-display {
+                margin-top: 15px;
+                padding: 10px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .calendar-day {
+                padding: 5px;
+                font-size: 0.8rem;
+            }
+            
+            .calendar-header button {
+                padding: 8px 12px;
+                font-size: 0.9rem;
+            }
+        }
+        </style>
+</head>
+
+<body>
+    <div class="container-xxl bg-white p-0">
+       
+        <div class="container-xxl bg-white p-0">
+           <div class="container-xxl bg-white p-0">
+               <!-- Navbar Start -->
+               <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top px-4 px-lg-5 py-lg-0">
+                   <a href="index.html" class="navbar-brand">
+                       <img class="Badge" src="images/IMG/BADGGE SCHOOL.png" alt="St Agnes School Badge">
+                   </a>
+                   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                       <span class="navbar-toggler-icon"></span>
+                   </button>
+                   <div class="collapse navbar-collapse" id="navbarCollapse">
+                       <ul class="navbar-nav mx-auto">
+                           <li class="nav-item"><a href="index.html" class="nav-link active">Home</a></li>
+                           
+                           <!-- About Us Dropdown -->
+                           <li class="nav-item dropdown">
+                               <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">About Us</a>
+                               <ul class="dropdown-menu">
+                                   <li><a href="about.html" class="dropdown-item">Headmistress's Message</a></li>
+                                   <li><a href="about.html" class="dropdown-item">School History</a></li>
+                                   <li><a href="about.html" class="dropdown-item">Staff</a></li>
+                                   <li><a href="about.html" class="dropdown-item">Gallery</a></li>
+                               </ul>
+                           </li>
+                           
+                           <!-- Academics Dropdown -->
+                           <li class="nav-item dropdown">
+                               <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Academics</a>
+                               <ul class="dropdown-menu">
+                                   <li><a href="academics.html" class="dropdown-item">Nursery Section</a></li>
+                                   <li><a href="academics.html" class="dropdown-item">Lower Primary</a></li>
+                                   <li><a href="academics.html" class="dropdown-item">Upper Primary</a></li>
+                                   <li><a href="academics.html" class="dropdown-item">Events</a></li>
+                               </ul>
+                           </li>
+                           
+                           <!-- Admissions Dropdown -->
+                           <li class="nav-item dropdown">
+                               <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Admissions</a>
+                               <ul class="dropdown-menu">
+                                   <li><a href="admissions.html" class="dropdown-item">Admission Process</a></li>
+                                   <li><a href="admissions.html" class="dropdown-item">Fees Structure</a></li>
+                                   <li><a href="admissions.html" class="dropdown-item">Make Appointment</a></li>
+                               </ul>
+                           </li>
+                           
+                           <li class="nav-item"><a href="contact.html" class="nav-link">Contact Us</a></li>
+                       </ul>
+                       <a href="admissions.html" class="btn btn-primary rounded-pill px-3 d-none d-lg-block text-white">Join Us <i class="fa fa-arrow-right ms-3"></i></a>
+                   </div>
+               </nav>
+               <!-- Navbar End -->
+
+
+
+        <!-- Page Header -->
+  <div class="container-xxl py-5 page-header position-relative mb-5" style="background: url('images/GALLERY/PAGE\ HEADER.avif') center center no-repeat; background-size: cover;">
+    <div class="container py-5">
+        <div class="text-center"> 
+            <h1 class="display-2 text-white animated slideInDown mb-4">Academics</h1>
+             <nav aria-label="breadcrumb animated slideInDown">
+                <ol class="breadcrumb justify-content-center"> 
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item text-white active" aria-current="page">Academics</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+</div>
+<!-- Page Header ends -->
+
+
+<!-- Classes begin -->
+        <div class="container-xxl py-5">
+            <div class="container">
+                <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+                    <h1 class="mb-3">School Classes</h1>
+                    <p>Cultivating Knowledge, Fostering Growth.</p>
+                </div>
+        
+                <div class="row">
+                    <div class="col-12">
+                        <div class="row g-4">
+                            <!-- Nursery Section Row -->
+                            <div class="col-12 text-center">
+                                <h2>Nursery Section</h2>
+                            </div>
+                            
+                            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                                <div class="classes-item">
+                                    <div class="bg-light rounded-circle w-75 mx-auto p-3">
+                                        <img class="img-fluid rounded-circle" src="img/classes-1.jpg" alt="">
+                                    </div>
+                                    <div class="bg-light rounded p-4 pt-5 mt-n5">
+                                        <a class="d-block text-center h3 mt-3 mb-4" href="">Language Development 1</a>
+                                        <a class="d-block text-center h3 mt-3 mb-4" href="">(Social Development)</a>
+                                        <!-- Rest of the card content remains the same -->
+                                        <!-- <div class="d-flex align-items-center">
+                                            <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" style="width: 45px; height: 45px;">
+                                            <div class="ms-3">
+                                                <h6 class="text-primary mb-1">Jhon Doe</h6>
+                                                <small>Teacher</small>
+                                            </div>
+                                        </div> -->
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                                <div class="classes-item">
+                                    <div class="bg-light rounded-circle w-75 mx-auto p-3">
+                                        <img class="img-fluid rounded-circle" src="img/classes-2.jpg" alt="">
+                                    </div>
+                                    <div class="bg-light rounded p-4 pt-5 mt-n5">
+                                        <a class="d-block text-center h3 mt-3 mb-4" href="">Learning Area 2</a>
+                                        <a class="d-block text-center h3 mt-3 mb-4" href="">(Language 1)</a>
+                                        <!-- Rest of the card content remains the same -->
+                                        <!-- <div class="d-flex align-items-center">
+                                            <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" style="width: 45px; height: 45px;">
+                                            <div class="ms-3">
+                                                <h6 class="text-primary mb-1">Jhon Doe</h6>
+                                                <small>Teacher</small>
+                                            </div>
+                                        </div> -->
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                                <div class="classes-item">
+                                    <div class="bg-light rounded-circle w-75 mx-auto p-3">
+                                        <img class="img-fluid rounded-circle" src="img/classes-3.jpg" alt="">
+                                    </div>
+                                    <div class="bg-light rounded p-4 pt-5 mt-n5">
+                                        <a class="d-block text-center h3 mt-3 mb-4" href="">Learning Area 3</a>
+                                        <a class="d-block text-center h3 mt-3 mb-4" href="">(Health Habits)</a>
+                                        <!-- Rest of the card content remains the same -->
+                                        <!-- <div class="d-flex align-items-center">
+                                            <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" style="width: 45px; height: 45px;">
+                                            <div class="ms-3">
+                                                <h6 class="text-primary mb-1">Jhon Doe</h6>
+                                                <small>Teacher</small>
+                                            </div>
+                                        </div> -->
+                                    </div>
+                                </div>
+                            </div>
+        
+
+                            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                                <div class="classes-item">
+                                    <div class="bg-light rounded-circle w-75 mx-auto p-3">
+                                        <img class="img-fluid rounded-circle" src="img/classes-3.jpg" alt="">
+                                    </div>
+                                    <div class="bg-light rounded p-4 pt-5 mt-n5">
+                                        <a class="d-block text-center h3 mt-3 mb-4" href="">Learning Area 4</a>
+                                        <a class="d-block text-center h3 mt-3 mb-4" href="">(Numbers)</a>
+                                        <!-- Rest of the card content remains the same -->
+                                        <!-- <div class="d-flex align-items-center">
+                                            <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" style="width: 45px; height: 45px;">
+                                            <div class="ms-3">
+                                                <h6 class="text-primary mb-1">Jhon Doe</h6>
+                                                <small>Teacher</small>
+                                            </div>
+                                        </div> -->
+                                    </div>
+                                </div>
+                            </div>
+        
+                            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                                <div class="classes-item">
+                                    <div class="bg-light rounded-circle w-75 mx-auto p-3">
+                                        <img class="img-fluid rounded-circle" src="img/classes-3.jpg" alt="">
+                                    </div>
+                                    <div class="bg-light rounded p-4 pt-5 mt-n5">
+                                        <a class="d-block text-center h3 mt-3 mb-4" href="">Learning Area 5</a>
+                                        <a class="d-block text-center h3 mt-3 mb-4" href="">(Reading,Language Dev't 2)</a>
+                                        <!-- Rest of the card content remains the same -->
+                                        <!-- <div class="d-flex align-items-center">
+                                            <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" style="width: 45px; height: 45px;">
+                                            <div class="ms-3">
+                                                <h6 class="text-primary mb-1">Jhon Doe</h6>
+                                                <small>Teacher</small>
+                                            </div>
+                                        </div> -->
+                                    </div>
+                                </div>
+                            </div>
+        
+                            <!-- Lower Primary Section Row -->
+                            <div class="col-12 text-center">
+                                <h2>Lower Primary</h2>
+                            </div>
+                            
+                            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                                <div class="classes-item">
+                                    <div class="bg-light rounded-circle w-75 mx-auto p-3">
+                                        <img class="img-fluid rounded-circle" src="img/classes-4.jpg" alt="">
+                                    </div>
+                                    <div class="bg-light rounded p-4 pt-5 mt-n5">
+                                        <a class="d-block text-center h3 mt-3 mb-4" href="">Language & Speaking</a>
+                                        <!-- Rest of the card content remains the same -->
+                                        <!-- <div class="d-flex align-items-center">
+                                            <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" style="width: 45px; height: 45px;">
+                                            <div class="ms-3">
+                                                <h6 class="text-primary mb-1">Jhon Doe</h6>
+                                                <small>Teacher</small>
+                                            </div>
+                                        </div> -->
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                                <div class="classes-item">
+                                    <div class="bg-light rounded-circle w-75 mx-auto p-3">
+                                        <img class="img-fluid rounded-circle" src="img/classes-5.jpg" alt="">
+                                    </div>
+                                    <div class="bg-light rounded p-4 pt-5 mt-n5">
+                                        <a class="d-block text-center h3 mt-3 mb-4" href="">Literacy 1 & 2</a>
+                                        <!-- Rest of the card content remains the same -->
+                                        <!-- <div class="d-flex align-items-center">
+                                            <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" style="width: 45px; height: 45px;">
+                                            <div class="ms-3">
+                                                <h6 class="text-primary mb-1">Jhon Doe</h6>
+                                                <small>Teacher</small>
+                                            </div>
+                                        </div> -->
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                                <div class="classes-item">
+                                    <div class="bg-light rounded-circle w-75 mx-auto p-3">
+                                        <img class="img-fluid rounded-circle" src="img/classes-6.jpg" alt="">
+                                    </div>
+                                    <div class="bg-light rounded p-4 pt-5 mt-n5">
+                                        <a class="d-block text-center h3 mt-3 mb-4" href="">Mathematics</a>
+                                        <!-- Rest of the card content remains the same -->
+                                        <!-- <div class="d-flex align-items-center">
+                                            <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" style="width: 45px; height: 45px;">
+                                            <div class="ms-3">
+                                                <h6 class="text-primary mb-1">Jhon Doe</h6>
+                                                <small>Teacher</small>
+                                            </div>
+                                        </div> -->
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                                <div class="classes-item">
+                                    <div class="bg-light rounded-circle w-75 mx-auto p-3">
+                                        <img class="img-fluid rounded-circle" src="img/classes-6.jpg" alt="">
+                                    </div>
+                                    <div class="bg-light rounded p-4 pt-5 mt-n5">
+                                        <a class="d-block text-center h3 mt-3 mb-4" href="">Religious Education</a>
+                                        <!-- Rest of the card content remains the same -->
+                                        <!-- <div class="d-flex align-items-center">
+                                            <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" style="width: 45px; height: 45px;">
+                                            <div class="ms-3">
+                                                <h6 class="text-primary mb-1">Jhon Doe</h6>
+                                                <small>Teacher</small>
+                                            </div>
+                                        </div> -->
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                                <div class="classes-item">
+                                    <div class="bg-light rounded-circle w-75 mx-auto p-3">
+                                        <img class="img-fluid rounded-circle" src="img/classes-6.jpg" alt="">
+                                    </div>
+                                    <div class="bg-light rounded p-4 pt-5 mt-n5">
+                                        <a class="d-block text-center h3 mt-3 mb-4" href="">Art & Craft</a>
+                                        <!-- Rest of the card content remains the same -->
+                                        <!-- <div class="d-flex align-items-center">
+                                            <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" style="width: 45px; height: 45px;">
+                                            <div class="ms-3">
+                                                <h6 class="text-primary mb-1">Jhon Doe</h6>
+                                                <small>Teacher</small>
+                                            </div>
+                                        </div> -->
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                                <div class="classes-item">
+                                    <div class="bg-light rounded-circle w-75 mx-auto p-3">
+                                        <img class="img-fluid rounded-circle" src="img/classes-6.jpg" alt="">
+                                    </div>
+                                    <div class="bg-light rounded p-4 pt-5 mt-n5">
+                                        <a class="d-block text-center h3 mt-3 mb-4" href="">Physical Education</a>
+                                        <!-- Rest of the card content remains the same -->
+                                        <!-- <div class="d-flex align-items-center">
+                                            <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" style="width: 45px; height: 45px;">
+                                            <div class="ms-3">
+                                                <h6 class="text-primary mb-1">Jhon Doe</h6>
+                                                <small>Teacher</small>
+                                            </div>
+                                        </div> -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 text-center">
+                                <h2>Upper Primary</h2>
+                            </div>
+                            
+                            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                                <div class="classes-item">
+                                    <div class="bg-light rounded-circle w-75 mx-auto p-3">
+                                        <img class="img-fluid rounded-circle" src="img/classes-4.jpg" alt="">
+                                    </div>
+                                    <div class="bg-light rounded p-4 pt-5 mt-n5">
+                                        <a class="d-block text-center h3 mt-3 mb-4" href="">Mathematics</a>
+                                        <!-- Rest of the card content remains the same -->
+                                        <!-- <div class="d-flex align-items-center">
+                                            <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" style="width: 45px; height: 45px;">
+                                            <div class="ms-3">
+                                                <h6 class="text-primary mb-1">Jhon Doe</h6>
+                                                <small>Teacher</small>
+                                            </div>
+                                        </div> -->
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                                <div class="classes-item">
+                                    <div class="bg-light rounded-circle w-75 mx-auto p-3">
+                                        <img class="img-fluid rounded-circle" src="img/classes-5.jpg" alt="">
+                                    </div>
+                                    <div class="bg-light rounded p-4 pt-5 mt-n5">
+                                        <a class="d-block text-center h3 mt-3 mb-4" href="">Science</a>
+                                        <!-- Rest of the card content remains the same -->
+                                        <!-- <div class="d-flex align-items-center">
+                                            <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" style="width: 45px; height: 45px;">
+                                            <div class="ms-3">
+                                                <h6 class="text-primary mb-1">Jhon Doe</h6>
+                                                <small>Teacher</small>
+                                            </div>
+                                        </div> -->
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                                <div class="classes-item">
+                                    <div class="bg-light rounded-circle w-75 mx-auto p-3">
+                                        <img class="img-fluid rounded-circle" src="img/classes-6.jpg" alt="">
+                                    </div>
+                                    <div class="bg-light rounded p-4 pt-5 mt-n5">
+                                        <a class="d-block text-center h3 mt-3 mb-4" href="">English</a>
+                                        <!-- Rest of the card content remains the same -->
+                                        <!-- <div class="d-flex align-items-center">
+                                            <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" style="width: 45px; height: 45px;">
+                                            <div class="ms-3">
+                                                <h6 class="text-primary mb-1">Jhon Doe</h6>
+                                                <small>Teacher</small>
+                                            </div>
+                                        </div> -->
+                                    </div>
+                                </div>
+                            </div>  
+                            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                                <div class="classes-item">
+                                    <div class="bg-light rounded-circle w-75 mx-auto p-3">
+                                        <img class="img-fluid rounded-circle" src="img/classes-6.jpg" alt="">
+                                    </div>
+                                    <div class="bg-light rounded p-4 pt-5 mt-n5">
+                                        <a class="d-block text-center h3 mt-3 mb-4" href="">Social Studies</a>
+                                        <!-- Rest of the card content remains the same -->
+                                        <!-- <div class="d-flex align-items-center">
+                                            <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" style="width: 45px; height: 45px;">
+                                            <div class="ms-3">
+                                                <h6 class="text-primary mb-1">Jhon Doe</h6>
+                                                <small>Teacher</small>
+                                            </div>
+                                        </div> -->
+                                    </div>
+                                </div>
+                            </div> 
+                            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                                <div class="classes-item">
+                                    <div class="bg-light rounded-circle w-75 mx-auto p-3">
+                                        <img class="img-fluid rounded-circle" src="img/classes-6.jpg" alt="">
+                                    </div>
+                                    <div class="bg-light rounded p-4 pt-5 mt-n5">
+                                        <a class="d-block text-center h3 mt-3 mb-4" href="">Computer Studies</a>
+                                        <!-- Rest of the card content remains the same -->
+                                        <!-- <div class="d-flex align-items-center">
+                                            <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" style="width: 45px; height: 45px;">
+                                            <div class="ms-3">
+                                                <h6 class="text-primary mb-1">Jhon Doe</h6>
+                                                <small>Teacher</small>
+                                            </div>
+                                        </div> -->
+                                    </div>
+                                </div>
+                            </div> 
+                            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                                <div class="classes-item">
+                                    <div class="bg-light rounded-circle w-75 mx-auto p-3">
+                                        <img class="img-fluid rounded-circle" src="img/classes-6.jpg" alt="">
+                                    </div>
+                                    <div class="bg-light rounded p-4 pt-5 mt-n5">
+                                        <a class="d-block text-center h3 mt-3 mb-4" href="">Religious Education</a>
+                                        <!-- Rest of the card content remains the same -->
+                                        <!-- <div class="d-flex align-items-center">
+                                            <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" style="width: 45px; height: 45px;">
+                                            <div class="ms-3">
+                                                <h6 class="text-primary mb-1">Jhon Doe</h6>
+                                                <small>Teacher</small>
+                                            </div>
+                                        </div> -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                                <div class="classes-item">
+                                    <div class="bg-light rounded-circle w-75 mx-auto p-3">
+                                        <img class="img-fluid rounded-circle" src="img/classes-6.jpg" alt="">
+                                    </div>
+                                    <div class="bg-light rounded p-4 pt-5 mt-n5">
+                                        <a class="d-block text-center h3 mt-3 mb-4" href="">Printing and Painting</a>
+                                        <!-- Rest of the card content remains the same -->
+                                        <!-- <div class="d-flex align-items-center">
+                                            <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" style="width: 45px; height: 45px;">
+                                            <div class="ms-3">
+                                                <h6 class="text-primary mb-1">Jhon Doe</h6>
+                                                <small>Teacher</small>
+                                            </div>
+                                        </div> -->
+                                    </div>
+                                </div>
+                            </div> 
+                            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                                <div class="classes-item">
+                                    <div class="bg-light rounded-circle w-75 mx-auto p-3">
+                                        <img class="img-fluid rounded-circle" src="img/classes-6.jpg" alt="">
+                                    </div>
+                                    <div class="bg-light rounded p-4 pt-5 mt-n5">
+                                        <a class="d-block text-center h3 mt-3 mb-4" href="">Knitting</a>
+                                        <!-- Rest of the card content remains the same -->
+                                        <!-- <div class="d-flex align-items-center">
+                                            <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" style="width: 45px; height: 45px;">
+                                            <div class="ms-3">
+                                                <h6 class="text-primary mb-1">Jhon Doe</h6>
+                                                <small>Teacher</small>
+                                            </div>
+                                        </div> -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                                <div class="classes-item">
+                                    <div class="bg-light rounded-circle w-75 mx-auto p-3">
+                                        <img class="img-fluid rounded-circle" src="img/classes-6.jpg" alt="">
+                                    </div>
+                                    <div class="bg-light rounded p-4 pt-5 mt-n5">
+                                        <a class="d-block text-center h3 mt-3 mb-4" href="">Baking</a>
+                                        <!-- Rest of the card content remains the same -->
+                                        <!-- <div class="d-flex align-items-center">
+                                            <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" style="width: 45px; height: 45px;">
+                                            <div class="ms-3">
+                                                <h6 class="text-primary mb-1">Jhon Doe</h6>
+                                                <small>Teacher</small>
+                                            </div>
+                                        </div> -->
+                                    </div>
+                                </div>
+                            </div>              
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+       <!-- Classes -->
+
+       <!-- Events calendar -->
+       <section id="academics-section">
+        <h2>School Academic Calendar</h2>
+        <div class="calendar-container">
+            <div class="calendar">
+                <div class="calendar-header">
+                    <button onclick="prevMonth()">&lt;</button>
+                    <span class="month-year" id="month">January 2025</span>
+                    <button onclick="nextMonth()">&gt;</button>
+                </div>
+                <div class="calendar-body" id="calendar-days">
+                    <!-- Days will be populated by JavaScript -->
+                </div>
+            </div>
+            <div class="events-display" id="events-display">
+                <h3>Upcoming Events</h3>
+                <div id="events-list"></div>
+            </div>
+        </div>
+    </section>
+     <!-- Events calendar -->
+
+        <!-- Appointment Start
+        <div class="container-xxl py-5">
+            <div class="container">
+                <div class="bg-light rounded">
+                    <div class="row g-0">
+                        <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+                            <div class="h-100 d-flex flex-column justify-content-center p-5">
+                                <h1 class="mb-4">Make Appointment</h1>
+                                <form>
+                                    <div class="row g-3">
+                                        <div class="col-sm-6">
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control border-0" id="gname" placeholder="Gurdian Name">
+                                                <label for="gname">Gurdian Name</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-floating">
+                                                <input type="email" class="form-control border-0" id="gmail" placeholder="Gurdian Email">
+                                                <label for="gmail">Gurdian Email</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control border-0" id="cname" placeholder="Child Name">
+                                                <label for="cname">Child Name</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control border-0" id="cage" placeholder="Child Age">
+                                                <label for="cage">Child Age</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-floating">
+                                                <textarea class="form-control border-0" placeholder="Leave a message here" id="message" style="height: 100px"></textarea>
+                                                <label for="message">Message</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <button class="btn btn-primary w-100 py-3" type="submit">Submit</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s" style="min-height: 400px;">
+                            <div class="position-relative h-100">
+                                <img class="position-absolute w-100 h-100 rounded" src="img/appointment.jpg" style="object-fit: cover;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+         Appointment End -->
+
+
+        <!-- Testimonial Start
+        <div class="container-xxl py-5">
+            <div class="container">
+                <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+                    <h1 class="mb-3">Our Clients Say!</h1>
+                    <p>Eirmod sed ipsum dolor sit rebum labore magna erat. Tempor ut dolore lorem kasd vero ipsum sit eirmod sit. Ipsum diam justo sed rebum vero dolor duo.</p>
+                </div>
+                <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="testimonial-item bg-light rounded p-5">
+                        <p class="fs-5">Tempor stet labore dolor clita stet diam amet ipsum dolor duo ipsum rebum stet dolor amet diam stet. Est stet ea lorem amet est kasd kasd erat eos</p>
+                        <div class="d-flex align-items-center bg-white me-n5" style="border-radius: 50px 0 0 50px;">
+                            <img class="img-fluid flex-shrink-0 rounded-circle" src="img/testimonial-1.jpg" style="width: 90px; height: 90px;">
+                            <div class="ps-3">
+                                <h3 class="mb-1">Client Name</h3>
+                                <span>Profession</span>
+                            </div>
+                            <i class="fa fa-quote-right fa-3x text-primary ms-auto d-none d-sm-flex"></i>
+                        </div>
+                    </div>
+                    <div class="testimonial-item bg-light rounded p-5">
+                        <p class="fs-5">Tempor stet labore dolor clita stet diam amet ipsum dolor duo ipsum rebum stet dolor amet diam stet. Est stet ea lorem amet est kasd kasd erat eos</p>
+                        <div class="d-flex align-items-center bg-white me-n5" style="border-radius: 50px 0 0 50px;">
+                            <img class="img-fluid flex-shrink-0 rounded-circle" src="img/testimonial-2.jpg" style="width: 90px; height: 90px;">
+                            <div class="ps-3">
+                                <h3 class="mb-1">Client Name</h3>
+                                <span>Profession</span>
+                            </div>
+                            <i class="fa fa-quote-right fa-3x text-primary ms-auto d-none d-sm-flex"></i>
+                        </div>
+                    </div>
+                    <div class="testimonial-item bg-light rounded p-5">
+                        <p class="fs-5">Tempor stet labore dolor clita stet diam amet ipsum dolor duo ipsum rebum stet dolor amet diam stet. Est stet ea lorem amet est kasd kasd erat eos</p>
+                        <div class="d-flex align-items-center bg-white me-n5" style="border-radius: 50px 0 0 50px;">
+                            <img class="img-fluid flex-shrink-0 rounded-circle" src="img/testimonial-3.jpg" style="width: 90px; height: 90px;">
+                            <div class="ps-3">
+                                <h3 class="mb-1">Client Name</h3>
+                                <span>Profession</span>
+                            </div>
+                            <i class="fa fa-quote-right fa-3x text-primary ms-auto d-none d-sm-flex"></i>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+         Testimonial End -->
+
+
+     <!-- Footer Start -->
+<div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
+    <div class="container py-5">
+        <div class="row g-5">
+            <div class="col-lg-3 col-md-6">
+                <h3 class="text-white mb-4">Get In Touch</h3>
+                <p class="mb-2"><i class="fa fa-map-marker-alt me-3 text-white">Plot 19,Kitoro Road,Entebbe</i></p>
+                <p class="mb-2"><i class="fa fa-phone-alt me-3 text-white">+256 704 274 169</i></p>
+                <p class="mb-2"><i class="fa fa-envelope me- text-white">stagnesprimaryentebe2016@gmail.com</i></p>
+                <div class="d-flex pt-2">
+                    <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-youtube"></i></a>
+                    <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <h3 class="text-white mb-4">Quick Links</h3>
+                <a class="btn btn-link text-white" href="about.html">About Us</a>
+                <a class="btn btn-link text-white" href="academics.html">Academics</a>
+                <a class="btn btn-link text-white" href="admissions.html">Admissions</a>
+                <a class="btn btn-link text-white" href="contact.html">Contact Us</a>
+                <!-- <a class="btn btn-link text-white-50" href="">Terms & Condition</a> -->
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <a href="about.html"><h3 class="text-white mb-4">Photo Gallery</h3></a>
+                <div class="row g-2 pt-2">
+                    <div class="col-4">
+                        <img class="img-fluid rounded bg-light p-1" src="img/classes-1.jpg" alt="">
+                    </div>
+                    <div class="col-4">
+                        <img class="img-fluid rounded bg-light p-1" src="img/classes-2.jpg" alt="">
+                    </div>
+                    <div class="col-4">
+                        <img class="img-fluid rounded bg-light p-1" src="img/classes-3.jpg" alt="">
+                    </div>
+                    <div class="col-4">
+                        <img class="img-fluid rounded bg-light p-1" src="img/classes-4.jpg" alt="">
+                    </div>
+                    <div class="col-4">
+                        <img class="img-fluid rounded bg-light p-1" src="img/classes-5.jpg" alt="">
+                    </div>
+                    <div class="col-4">
+                        <img class="img-fluid rounded bg-light p-1" src="img/classes-6.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+            <!-- Newsletter Signup Section -->
+             <!-- <div class="col-lg-3 col-md-6">
+                <h3 class="text-white mb-4">Newsletter</h3>
+                <p class="text-white">Stay updated with our latest news and articles</p>
+                <div class="newsletter-form">
+                    <input type="email" placeholder="Enter email" required>
+                    <button type="submit">Subscribe</button>
+                </div>
+            </div> -->
+        </div>
+    </div>
+    <div class="container">
+        <div class="copyright">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0 text-white">
+                    © <a class="border-bottom" href="#"></a> All Right Reserved. St.Agnes Primary School,Bugonga
+                    <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+                    <a class="border-bottom" href="https://htmlcodex.com"></a>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <div class="footer-menu">
+                        <a href="index.html">Home</a>
+                        <a href="">Cookies</a>
+                         <!-- <a href="">Help</a>q -->
+                        <a href="admissions.html">FAQs</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Footer End -->
+
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up text-white"></i></a>
+    </div>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!--  Javascript -->
+    <script src="js/main.js"></script>
+    <script>
+        const months = [
+            "January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"
+        ];
+        
+        // Sample events data
+        const events = [
+            { date: new Date(2024, 11, 9), title: "Interviews of new entrants begin(1st shift)", description: "9AM - 4PM" },
+            { date: new Date(2024, 11, 12), title: "Interviews for new entrants ends", description: "9AM - 4PM" },
+            { date: new Date(2025, 0, 6), title: "Interviews of new entrants begin(2nd shift)", description: "9AM - 4PM" },
+            { date: new Date(2025, 0, 10), title: "Interviews of new entrants end", description: "9AM - 4PM" },
+            { date: new Date(2025, 0, 28), title: "Staff Recollection", description: "9AM - 4PM" },
+            { date: new Date(2025, 0, 28), title: "General Staff Meeting", description: "9AM - 4PM" },
+            // { date: new Date(2025, 0, 10), title: "Interviews of new entrants end", description: "9AM - 4PM" },
+            { date: new Date(2025, 1, 1), title: "Reporting of Boarders", description: "6 AM - 4 PM" },
+            { date: new Date(2025, 1, 3), title: "Official opening of Term One", description: "9 AM - 4 PM" },
+            // { date: new Date(2025, 1, 25), title: "Pupils' Recollection", description: "9 AM - 4 PM" },
+            { date: new Date(2025, 1, 28), title: "P.7 Parents meeting and class visit", description: "9 AM - 4 PM" },
+            { date: new Date(2025, 2, 22), title: "Parents Annual General Meeting and visitation", description: "9 AM - 4 PM" },
+            { date: new Date(2025, 2, 28), title: "Nursery day out", description: "9 AM - 4 PM" },
+            { date: new Date(2025, 3, 12), title: "P.T.A Executive Meeting", description: "9 AM - 4 PM" },
+            { date: new Date(2025, 3,16), title: "Easter break begins", description: "9 AM - 4 PM" },
+            { date: new Date(2025, 3, 21), title: "Reporting of Boarders from Easter Break", description: "" },
+            { date: new Date(2025, 3, 22), title: "Reporting of Dayscholars from Easter Break", description: "" },
+            { date: new Date(2025, 3, 25), title: "Nursery and Lower Primary study Tour", description: "" },
+            { date: new Date(2025, 3, 30), title: "S.M.C Meeting", description: "" },
+            { date: new Date(2025, 4, 1), title: "End of Term 1", description: "" },
+            { date: new Date(2025, 4, 24), title: "Reporting of Boarders", description: "" },
+            { date: new Date(2025, 4, 26), title: "Official opening of Term 2", description: "" },
+            // { date: new Date(2025, 5, 9), title: "Old students Re-union", description: "" },
+            { date: new Date(2025, 5, 13), title: "Class visit P.4 - P.5", description: "" },
+            { date: new Date(2025, 6, 4), title: "Class visit P.1 - P.3", description: "" },
+            { date: new Date(2025, 6, 11), title: "Nursery Parents' Meeting & Class Visit", description: "" },
+            { date: new Date(2025, 6, 11), title: "Visitation day", description: "" },
+            { date: new Date(2025, 7, 1), title: "Study Tour Upper P.4-P.5", description: "" },
+            { date: new Date(2025, 7, 8), title: "Study Tour Upper P.6-P.7", description: "" },
+            { date: new Date(2025, 7, 13), title: "S.M.C Meeting", description: "" },
+            { date: new Date(2025, 7, 20), title: "End of Term 2", description: "" },
+            { date: new Date(2025, 8, 13), title: "Reporting of Boarders", description: "" },
+            { date: new Date(2025, 8, 15), title: "Official Opening of Term 3", description: "" },
+            { date: new Date(2025, 9, 25), title: "VD/Blessing of P.7 Candidates", description: "" },
+            { date: new Date(2025, 10, 15), title: "P.6 Parents' Meeting", description: "" },
+            { date: new Date(2025, 10, 22), title: "P.T.A Executive Meeting", description: "" },
+            { date: new Date(2025, 10, 26), title: "S.M.C Meeting", description: "" },
+            { date: new Date(2025, 10, 29), title: "Nursery Graduation Party", description: "" },
+            { date: new Date(2025, 11, 3), title: "End of Term 3", description: "" },
+            { date: new Date(2025, 11, 8), title: "Interviews for 2026 begin", description: "" },
+            { date: new Date(2025, 11, 11), title: "interviews for 2026 end", description: "" },
+        ];
+        
+        let currentDate = new Date();
+        
+        function updateCalendar() {
+            const currentMonth = currentDate.getMonth();
+            const currentYear = currentDate.getFullYear();
+            const firstDayOfMonth = new Date(currentYear, currentMonth, 1);
+            const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+            const firstDayOfWeek = firstDayOfMonth.getDay();
+        
+            const daysContainer = document.getElementById("calendar-days");
+            daysContainer.innerHTML = "";
+        
+            // Add weekday headers
+            const weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+            weekdays.forEach(day => {
+                const dayHeader = document.createElement("div");
+                dayHeader.classList.add("calendar-day", "header");
+                dayHeader.textContent = day;
+                daysContainer.appendChild(dayHeader);
+            });
+        
+            // Add empty cells for days before the first day of the month
+            for (let i = 0; i < firstDayOfWeek; i++) {
+                const emptyCell = document.createElement("div");
+                emptyCell.classList.add("calendar-day");
+                daysContainer.appendChild(emptyCell);
+            }
+        
+            // Add the days of the month
+            for (let day = 1; day <= daysInMonth; day++) {
+                const dayCell = document.createElement("div");
+                dayCell.classList.add("calendar-day");
+                dayCell.textContent = day;
+        
+                // Check for events on this day
+                const dayEvents = events.filter(event => 
+                    event.date.getDate() === day &&
+                    event.date.getMonth() === currentMonth &&
+                    event.date.getFullYear() === currentYear
+                );
+        
+                if (dayEvents.length > 0) {
+                    dayCell.classList.add("event");
+                    dayCell.addEventListener("click", () => showEvents(dayEvents));
+                }
+        
+                // Highlight today's date
+                const today = new Date();
+                if (day === today.getDate() && 
+                    currentMonth === today.getMonth() && 
+                    currentYear === today.getFullYear()) {
+                    dayCell.classList.add("today");
+                }
+        
+                daysContainer.appendChild(dayCell);
+            }
+        
+            // Update month and year display
+            document.getElementById("month").textContent = `${months[currentMonth]} ${currentYear}`;
+            
+            // Update events display
+            updateEventsDisplay();
+        }
+        
+        function showEvents(dayEvents) {
+            const eventsList = document.getElementById("events-list");
+            eventsList.innerHTML = dayEvents.map(event => `
+                <div class="event-item">
+                    <strong>${event.title}</strong>
+                    <p>${event.description}</p>
+                </div>
+            `).join("");
+        }
+        
+        function updateEventsDisplay() {
+            const currentMonthEvents = events.filter(event => 
+                event.date.getMonth() === currentDate.getMonth() &&
+                event.date.getFullYear() === currentDate.getFullYear()
+            );
+            
+            const eventsList = document.getElementById("events-list");
+            if (currentMonthEvents.length === 0) {
+                eventsList.innerHTML = "<p>No events this month</p>";
+            } else {
+                eventsList.innerHTML = currentMonthEvents
+                    .sort((a, b) => a.date - b.date)
+                    .map(event => `
+                        <div class="event-item">
+                            <strong>${event.date.getDate()} ${months[event.date.getMonth()]}</strong>: ${event.title}
+                            <p>${event.description}</p>
+                        </div>
+                    `).join("");
+            }
+        }
+        
+        function prevMonth() {
+            currentDate.setMonth(currentDate.getMonth() - 1);
+            updateCalendar();
+        }
+        
+        function nextMonth() {
+            currentDate.setMonth(currentDate.getMonth() + 1);
+            updateCalendar();
+        }
+        
+        // Initialize the calendar
+        document.addEventListener('DOMContentLoaded', function() {
+            updateCalendar();
+        });
+        </script>
+</body>
+
+</html>
